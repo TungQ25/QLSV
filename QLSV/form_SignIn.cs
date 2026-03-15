@@ -38,9 +38,10 @@ namespace QLSV
         private void button1_Click(object sender, EventArgs e)
         {
             // Giả lập đăng nhập thành công
-            Dashboard dashboardForm = new Dashboard();
-            dashboardForm.Show();
             this.Hide();
+            Dashboard dashboardForm = new Dashboard();
+            dashboardForm.ShowDialog();
+            this.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,9 +61,10 @@ namespace QLSV
 
         private void link_SignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Sign_up signUpForm = new Sign_up();
-            signUpForm.Show();
             this.Hide();
+            Sign_up signUpForm = new Sign_up();
+            signUpForm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -57,9 +57,10 @@ namespace QLSV
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Sign_in signInForm = new Sign_in();
-            signInForm.Show();
             this.Hide();
+            Sign_in signInForm = new Sign_in();
+            signInForm.ShowDialog();
+            this.Close();
         }
     }
 }
