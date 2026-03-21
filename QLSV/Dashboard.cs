@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -7,11 +8,6 @@ namespace QLSV
 {
     public partial class Dashboard : Form
     {
-        private Panel sidebarPanel;
-        private Panel headerPanel;
-        private Panel contentPanel;
-        private Panel menuPanel;
-
         public Dashboard()
         {
             InitializeComponent();
@@ -19,7 +15,45 @@ namespace QLSV
             btnAdd.Click += btnAdd_Click;
             btnEdit.Click += btnEdit_Click;
             btnDelete.Click += btnDelete_Click;
+            pnlTongSV.Resize += RoundedControls_Resize;
+            pnlSoLop.Resize += RoundedControls_Resize;
+            pnlSVmoi.Resize += RoundedControls_Resize;
+            pnlActions.Resize += RoundedControls_Resize;
+            pnlStudentList.Resize += RoundedControls_Resize;
+            Shown += Dashboard_Shown;
             LoadSinhVien();
+        }
+
+        private void Dashboard_Shown(object sender, EventArgs e)
+        {
+            ApplyRoundedCorners();
+        }
+
+        private void RoundedControls_Resize(object sender, EventArgs e)
+        {
+            ApplyRoundedCorners();
+        }
+
+        private void ApplyRoundedCorners()
+        {
+            SetRoundedRegion(pnlTongSV, 16);
+            SetRoundedRegion(pnlSoLop, 16);
+            SetRoundedRegion(pnlSVmoi, 16);
+            SetRoundedRegion(pnlActions, 16);
+            SetRoundedRegion(pnlStudentList, 16);
+        }
+
+        private void SetRoundedRegion(Control control, int radius)
+        {
+            if (control.Width <= 0 || control.Height <= 0)
+            {
+                return;
+            }
+
+            using (var path = RoundedPanel.CreateRoundedPath(control.ClientRectangle, radius))
+            {
+                control.Region = new Region(path);
+            }
         }
 
         private void LoadSinhVien()

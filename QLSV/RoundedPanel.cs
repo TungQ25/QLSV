@@ -67,7 +67,7 @@ namespace QLSV
                 borderRadius = this.Height;
         }
 
-        private GraphicsPath GetRoundedPath(Rectangle bounds, int radius)
+        public static GraphicsPath CreateRoundedPath(Rectangle bounds, int radius)
         {
             int diameter = radius * 2;
             GraphicsPath path = new GraphicsPath();
@@ -97,8 +97,8 @@ namespace QLSV
             Rectangle rectBorder = Rectangle.Inflate(rectSurface, -borderSize, -borderSize);
             int smoothSize = borderSize > 0 ? borderSize : 1;
 
-            using (GraphicsPath pathSurface = GetRoundedPath(rectSurface, borderRadius))
-            using (GraphicsPath pathBorder = GetRoundedPath(rectBorder, borderRadius - borderSize))
+            using (GraphicsPath pathSurface = CreateRoundedPath(rectSurface, borderRadius))
+            using (GraphicsPath pathBorder = CreateRoundedPath(rectBorder, borderRadius - borderSize))
             using (Pen penSurface = new Pen(this.Parent.BackColor, smoothSize))
             using (Pen penBorder = new Pen(borderColor, borderSize))
             {
