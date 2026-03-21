@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_signIn = new QLSV.RoundedPanel(); // Sử dụng custom RoundedPanel class để tạo panel với góc bo tròn
+            this.panel_signIn = new QLSV.RoundedPanel();
             this.link_SignIn = new System.Windows.Forms.LinkLabel();
             this.lblChuacotk = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.Label();
+            this.lbl_password = new System.Windows.Forms.Label();
             this.lblDangNhap = new System.Windows.Forms.Label();
-            this.username = new System.Windows.Forms.Label();
-            this.SignIn = new System.Windows.Forms.Button();
+            this.lbl_username = new System.Windows.Forms.Label();
+            this.btnSignIn = new System.Windows.Forms.Button();
             this.textBox_password = new System.Windows.Forms.TextBox();
             this.textBox_username = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -67,10 +67,10 @@
             this.panel_signIn.BorderSize = 0;
             this.panel_signIn.Controls.Add(this.link_SignIn);
             this.panel_signIn.Controls.Add(this.lblChuacotk);
-            this.panel_signIn.Controls.Add(this.password);
+            this.panel_signIn.Controls.Add(this.lbl_password);
             this.panel_signIn.Controls.Add(this.lblDangNhap);
-            this.panel_signIn.Controls.Add(this.username);
-            this.panel_signIn.Controls.Add(this.SignIn);
+            this.panel_signIn.Controls.Add(this.lbl_username);
+            this.panel_signIn.Controls.Add(this.btnSignIn);
             this.panel_signIn.Controls.Add(this.textBox_password);
             this.panel_signIn.Controls.Add(this.textBox_username);
             this.panel_signIn.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,7 +88,7 @@
             this.link_SignIn.Location = new System.Drawing.Point(201, 333);
             this.link_SignIn.Name = "link_SignIn";
             this.link_SignIn.Size = new System.Drawing.Size(47, 13);
-            this.link_SignIn.TabIndex = 4;
+            this.link_SignIn.TabIndex = 3;
             this.link_SignIn.TabStop = true;
             this.link_SignIn.Text = "Đăng ký";
             this.link_SignIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_SignUp_LinkClicked);
@@ -104,15 +104,15 @@
             this.lblChuacotk.Text = "Chưa có tài khoản? ";
             this.lblChuacotk.Click += new System.EventHandler(this.label3_Click);
             // 
-            // password
+            // lbl_password
             // 
-            this.password.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.password.AutoSize = true;
-            this.password.Location = new System.Drawing.Point(54, 214);
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(52, 13);
-            this.password.TabIndex = 2;
-            this.password.Text = "Mật khẩu";
+            this.lbl_password.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_password.AutoSize = true;
+            this.lbl_password.Location = new System.Drawing.Point(54, 214);
+            this.lbl_password.Name = "lbl_password";
+            this.lbl_password.Size = new System.Drawing.Size(52, 13);
+            this.lbl_password.TabIndex = 2;
+            this.lbl_password.Text = "Mật khẩu";
             // 
             // lblDangNhap
             // 
@@ -126,27 +126,27 @@
             this.lblDangNhap.Text = "Đăng nhập";
             this.lblDangNhap.Click += new System.EventHandler(this.label1_Click);
             // 
-            // username
+            // lbl_username
             // 
-            this.username.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.username.AutoSize = true;
-            this.username.Location = new System.Drawing.Point(54, 139);
-            this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(81, 13);
-            this.username.TabIndex = 2;
-            this.username.Text = "Tên đăng nhập";
-            this.username.Click += new System.EventHandler(this.label1_Click);
+            this.lbl_username.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.Location = new System.Drawing.Point(54, 139);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Size = new System.Drawing.Size(81, 13);
+            this.lbl_username.TabIndex = 2;
+            this.lbl_username.Text = "Tên đăng nhập";
+            this.lbl_username.Click += new System.EventHandler(this.label1_Click);
             // 
-            // SignIn
+            // btnSignIn
             // 
-            this.SignIn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.SignIn.Location = new System.Drawing.Point(95, 290);
-            this.SignIn.Name = "SignIn";
-            this.SignIn.Size = new System.Drawing.Size(161, 40);
-            this.SignIn.TabIndex = 1;
-            this.SignIn.Text = "Đăng nhập";
-            this.SignIn.UseVisualStyleBackColor = true;
-            this.SignIn.Click += new System.EventHandler(this.button1_Click);
+            this.btnSignIn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnSignIn.Location = new System.Drawing.Point(95, 290);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(161, 40);
+            this.btnSignIn.TabIndex = 2;
+            this.btnSignIn.Text = "Đăng nhập";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox_password
             // 
@@ -154,7 +154,7 @@
             this.textBox_password.Location = new System.Drawing.Point(54, 230);
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.Size = new System.Drawing.Size(237, 20);
-            this.textBox_password.TabIndex = 0;
+            this.textBox_password.TabIndex = 1;
             this.textBox_password.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox_username
@@ -188,10 +188,10 @@
         private RoundedPanel panel_signIn;
         private System.Windows.Forms.LinkLabel link_SignIn;
         private System.Windows.Forms.Label lblChuacotk;
-        private System.Windows.Forms.Label password;
+        private System.Windows.Forms.Label lbl_password;
         private System.Windows.Forms.Label lblDangNhap;
-        private System.Windows.Forms.Label username;
-        private System.Windows.Forms.Button SignIn;
+        private System.Windows.Forms.Label lbl_username;
+        private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.TextBox textBox_password;
         private System.Windows.Forms.TextBox textBox_username;
     }

@@ -29,42 +29,55 @@ namespace QLSV
         private void InitializeComponent()
         {
             this.pnlTopbar = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlThongtincanhan = new System.Windows.Forms.Panel();
             this.lblUsername = new System.Windows.Forms.Label();
             this.imgAvt = new System.Windows.Forms.PictureBox();
             this.imgNotification = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.pnlDashboard = new System.Windows.Forms.TableLayoutPanel();
             this.pnlStudentList = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridDSSV = new System.Windows.Forms.DataGridView();
             this.MSSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gioitinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ngaysinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lop = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.khoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDSSVTitle = new System.Windows.Forms.Label();
             this.pnlActions = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtNgaySinh = new System.Windows.Forms.TextBox();
-            this.lblNgaySinh = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtTrangThai = new System.Windows.Forms.TextBox();
-            this.lblTrangThai = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtKhoa = new System.Windows.Forms.TextBox();
-            this.lblKhoa = new System.Windows.Forms.Label();
+            this.txtGioitinh = new System.Windows.Forms.ComboBox();
+            this.lblGioitinh = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtFullname = new System.Windows.Forms.TextBox();
+            this.lblFullname = new System.Windows.Forms.Label();
             this.pnlActionButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtMssv = new System.Windows.Forms.TextBox();
             this.lblMSSV = new System.Windows.Forms.Label();
+            this.lblThongtinchitiet = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.lblNgaySinh = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtLop = new System.Windows.Forms.TextBox();
+            this.txtLop = new System.Windows.Forms.ComboBox();
             this.lblLop = new System.Windows.Forms.Label();
-            this.lblTimkiemchitiet = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtTrangThai = new System.Windows.Forms.ComboBox();
+            this.lblTrangThai = new System.Windows.Forms.Label();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtKhoa = new System.Windows.Forms.ComboBox();
+            this.lblKhoa = new System.Windows.Forms.Label();
             this.pnlTongQuan = new System.Windows.Forms.Panel();
             this.pnlSoLieuThongKe = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSVmoi = new System.Windows.Forms.Panel();
@@ -95,6 +108,7 @@ namespace QLSV
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.lblLogoName = new System.Windows.Forms.Label();
             this.pnlTopbar.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             this.pnlThongtincanhan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAvt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNotification)).BeginInit();
@@ -103,12 +117,15 @@ namespace QLSV
             this.pnlStudentList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDSSV)).BeginInit();
             this.pnlActions.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.pnlTongQuan.SuspendLayout();
             this.pnlSoLieuThongKe.SuspendLayout();
             this.pnlSVmoi.SuspendLayout();
@@ -126,59 +143,119 @@ namespace QLSV
             // 
             // pnlTopbar
             // 
-            this.pnlTopbar.BackColor = System.Drawing.Color.White;
-            this.pnlTopbar.Controls.Add(this.pnlThongtincanhan);
+            this.pnlTopbar.BackColor = System.Drawing.Color.Silver;
+            this.pnlTopbar.Controls.Add(this.tableLayoutPanel6);
             this.pnlTopbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopbar.Location = new System.Drawing.Point(230, 0);
             this.pnlTopbar.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.pnlTopbar.Name = "pnlTopbar";
-            this.pnlTopbar.Size = new System.Drawing.Size(902, 65);
+            this.pnlTopbar.Size = new System.Drawing.Size(920, 65);
             this.pnlTopbar.TabIndex = 1;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.Silver;
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel6.Controls.Add(this.pnlThongtincanhan, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnSearch, 2, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(920, 65);
+            this.tableLayoutPanel6.TabIndex = 10;
             // 
             // pnlThongtincanhan
             // 
             this.pnlThongtincanhan.Controls.Add(this.lblUsername);
             this.pnlThongtincanhan.Controls.Add(this.imgAvt);
             this.pnlThongtincanhan.Controls.Add(this.imgNotification);
-            this.pnlThongtincanhan.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlThongtincanhan.Location = new System.Drawing.Point(702, 0);
+            this.pnlThongtincanhan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlThongtincanhan.Location = new System.Drawing.Point(767, 0);
+            this.pnlThongtincanhan.Margin = new System.Windows.Forms.Padding(0);
             this.pnlThongtincanhan.Name = "pnlThongtincanhan";
-            this.pnlThongtincanhan.Size = new System.Drawing.Size(200, 65);
-            this.pnlThongtincanhan.TabIndex = 7;
+            this.pnlThongtincanhan.Size = new System.Drawing.Size(153, 65);
+            this.pnlThongtincanhan.TabIndex = 22;
             // 
             // lblUsername
             // 
+            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.Black;
             this.lblUsername.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblUsername.Location = new System.Drawing.Point(130, 25);
+            this.lblUsername.Location = new System.Drawing.Point(92, 25);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(49, 17);
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "Admin";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblUsername.Click += new System.EventHandler(this.label1_Click);
             // 
             // imgAvt
             // 
+            this.imgAvt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgAvt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            this.imgAvt.Location = new System.Drawing.Point(94, 17);
+            this.imgAvt.Location = new System.Drawing.Point(56, 17);
             this.imgAvt.Name = "imgAvt";
             this.imgAvt.Size = new System.Drawing.Size(30, 30);
             this.imgAvt.TabIndex = 6;
             this.imgAvt.TabStop = false;
-            this.imgAvt.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // imgNotification
             // 
+            this.imgNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgNotification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            this.imgNotification.Location = new System.Drawing.Point(57, 21);
+            this.imgNotification.Location = new System.Drawing.Point(19, 21);
             this.imgNotification.Name = "imgNotification";
             this.imgNotification.Size = new System.Drawing.Size(22, 22);
             this.imgNotification.TabIndex = 6;
             this.imgNotification.TabStop = false;
-            this.imgNotification.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.imgNotification.Click += new System.EventHandler(this.imgNotification_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(203, 20);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(225, 20);
+            this.textBox1.TabIndex = 20;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Silver;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.label6.Size = new System.Drawing.Size(194, 57);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Tìm kiếm chi tiết";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(475, 15);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(15);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(117, 35);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Tìm kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // pnlMainContent
             // 
@@ -188,27 +265,28 @@ namespace QLSV
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainContent.Location = new System.Drawing.Point(230, 65);
             this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(902, 560);
+            this.pnlMainContent.Size = new System.Drawing.Size(920, 631);
             this.pnlMainContent.TabIndex = 1;
             this.pnlMainContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // pnlDashboard
             // 
             this.pnlDashboard.ColumnCount = 3;
-            this.pnlDashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.pnlDashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.pnlDashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlDashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.pnlDashboard.Controls.Add(this.pnlStudentList, 1, 2);
-            this.pnlDashboard.Controls.Add(this.pnlActions, 1, 0);
+            this.pnlDashboard.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlDashboard.Controls.Add(this.pnlStudentList, 1, 3);
+            this.pnlDashboard.Controls.Add(this.pnlActions, 1, 1);
             this.pnlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDashboard.Location = new System.Drawing.Point(0, 161);
+            this.pnlDashboard.Location = new System.Drawing.Point(0, 173);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.RowCount = 4;
-            this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.pnlDashboard.RowCount = 5;
+            this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.pnlDashboard.Size = new System.Drawing.Size(902, 399);
+            this.pnlDashboard.Size = new System.Drawing.Size(920, 458);
             this.pnlDashboard.TabIndex = 10;
             this.pnlDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint_2);
             // 
@@ -220,14 +298,14 @@ namespace QLSV
             this.pnlStudentList.Controls.Add(this.dataGridDSSV, 0, 1);
             this.pnlStudentList.Controls.Add(this.lblDSSVTitle, 0, 0);
             this.pnlStudentList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlStudentList.Location = new System.Drawing.Point(28, 190);
+            this.pnlStudentList.Location = new System.Drawing.Point(35, 280);
             this.pnlStudentList.Margin = new System.Windows.Forms.Padding(0);
             this.pnlStudentList.Name = "pnlStudentList";
             this.pnlStudentList.Padding = new System.Windows.Forms.Padding(3);
             this.pnlStudentList.RowCount = 2;
-            this.pnlStudentList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.pnlStudentList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlStudentList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlStudentList.Size = new System.Drawing.Size(846, 184);
+            this.pnlStudentList.Size = new System.Drawing.Size(850, 153);
             this.pnlStudentList.TabIndex = 7;
             // 
             // dataGridDSSV
@@ -235,45 +313,59 @@ namespace QLSV
             this.dataGridDSSV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDSSV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MSSV,
+            this.fullname,
+            this.gioitinh,
             this.Ngaysinh,
             this.lop,
             this.khoa,
             this.trangthai});
             this.dataGridDSSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridDSSV.Location = new System.Drawing.Point(3, 38);
+            this.dataGridDSSV.Location = new System.Drawing.Point(3, 48);
             this.dataGridDSSV.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridDSSV.Name = "dataGridDSSV";
-            this.dataGridDSSV.Size = new System.Drawing.Size(840, 143);
+            this.dataGridDSSV.Size = new System.Drawing.Size(844, 102);
             this.dataGridDSSV.TabIndex = 6;
             this.dataGridDSSV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // MSSV
             // 
-            this.MSSV.FillWeight = 30F;
+            this.MSSV.FillWeight = 51.94611F;
             this.MSSV.HeaderText = "MSSV";
             this.MSSV.Name = "MSSV";
             // 
+            // fullname
+            // 
+            this.fullname.FillWeight = 117.3749F;
+            this.fullname.HeaderText = "Họ và tên";
+            this.fullname.Name = "fullname";
+            // 
+            // gioitinh
+            // 
+            this.gioitinh.FillWeight = 47.94086F;
+            this.gioitinh.HeaderText = "Giới tính";
+            this.gioitinh.Name = "gioitinh";
+            // 
             // Ngaysinh
             // 
-            this.Ngaysinh.FillWeight = 80F;
+            this.Ngaysinh.FillWeight = 93.8999F;
             this.Ngaysinh.HeaderText = "Ngày sinh";
             this.Ngaysinh.Name = "Ngaysinh";
             // 
             // lop
             // 
-            this.lop.FillWeight = 85.6599F;
+            this.lop.FillWeight = 80.44489F;
             this.lop.HeaderText = "Lớp";
             this.lop.Name = "lop";
             // 
             // khoa
             // 
-            this.khoa.FillWeight = 85.6599F;
+            this.khoa.FillWeight = 74.8298F;
             this.khoa.HeaderText = "Khoa";
             this.khoa.Name = "khoa";
             // 
             // trangthai
             // 
-            this.trangthai.FillWeight = 85.6599F;
+            this.trangthai.FillWeight = 100.5432F;
             this.trangthai.HeaderText = "Trạng thái";
             this.trangthai.Name = "trangthai";
             // 
@@ -282,11 +374,11 @@ namespace QLSV
             this.lblDSSVTitle.AutoSize = true;
             this.lblDSSVTitle.BackColor = System.Drawing.Color.White;
             this.lblDSSVTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDSSVTitle.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Bold);
-            this.lblDSSVTitle.Location = new System.Drawing.Point(13, 8);
-            this.lblDSSVTitle.Margin = new System.Windows.Forms.Padding(10, 5, 3, 5);
+            this.lblDSSVTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblDSSVTitle.Location = new System.Drawing.Point(25, 15);
+            this.lblDSSVTitle.Margin = new System.Windows.Forms.Padding(22, 12, 3, 5);
             this.lblDSSVTitle.Name = "lblDSSVTitle";
-            this.lblDSSVTitle.Size = new System.Drawing.Size(827, 21);
+            this.lblDSSVTitle.Size = new System.Drawing.Size(819, 28);
             this.lblDSSVTitle.TabIndex = 4;
             this.lblDSSVTitle.Text = "Danh sách sinh viên";
             this.lblDSSVTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -295,209 +387,154 @@ namespace QLSV
             // pnlActions
             // 
             this.pnlActions.BackColor = System.Drawing.Color.White;
-            this.pnlActions.ColumnCount = 4;
+            this.pnlActions.ColumnCount = 5;
+            this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.pnlActions.Controls.Add(this.tableLayoutPanel2, 1, 1);
-            this.pnlActions.Controls.Add(this.tableLayoutPanel5, 1, 2);
-            this.pnlActions.Controls.Add(this.tableLayoutPanel4, 0, 2);
-            this.pnlActions.Controls.Add(this.pnlActionButtons, 2, 2);
-            this.pnlActions.Controls.Add(this.tableLayoutPanel1, 0, 1);
-            this.pnlActions.Controls.Add(this.tableLayoutPanel3, 2, 1);
-            this.pnlActions.Controls.Add(this.lblTimkiemchitiet, 0, 0);
+            this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.pnlActions.Controls.Add(this.tableLayoutPanel4, 3, 1);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel7, 2, 1);
+            this.pnlActions.Controls.Add(this.pnlActionButtons, 3, 3);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel1, 1, 1);
+            this.pnlActions.Controls.Add(this.lblThongtinchitiet, 1, 0);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel3, 2, 2);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel5, 1, 3);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel9, 2, 3);
+            this.pnlActions.Controls.Add(this.tableLayoutPanel8, 3, 2);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(28, 0);
+            this.pnlActions.Location = new System.Drawing.Point(35, 20);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.RowCount = 4;
-            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.pnlActions.RowCount = 5;
+            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.pnlActions.Size = new System.Drawing.Size(846, 170);
+            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.pnlActions.Size = new System.Drawing.Size(850, 240);
             this.pnlActions.TabIndex = 8;
             this.pnlActions.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.txtNgaySinh, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblNgaySinh, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(273, 43);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(274, 60);
-            this.tableLayoutPanel2.TabIndex = 16;
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNgaySinh.Location = new System.Drawing.Point(19, 28);
-            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Size = new System.Drawing.Size(252, 20);
-            this.txtNgaySinh.TabIndex = 20;
-            // 
-            // lblNgaySinh
-            // 
-            this.lblNgaySinh.AutoSize = true;
-            this.lblNgaySinh.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblNgaySinh.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNgaySinh.Location = new System.Drawing.Point(19, 9);
-            this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(252, 16);
-            this.lblNgaySinh.TabIndex = 7;
-            this.lblNgaySinh.Text = "Ngày sinh";
-            this.lblNgaySinh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.txtTrangThai, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lblTrangThai, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(273, 103);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(274, 52);
-            this.tableLayoutPanel5.TabIndex = 14;
-            // 
-            // txtTrangThai
-            // 
-            this.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTrangThai.Location = new System.Drawing.Point(19, 23);
-            this.txtTrangThai.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(252, 20);
-            this.txtTrangThai.TabIndex = 10;
-            // 
-            // lblTrangThai
-            // 
-            this.lblTrangThai.AutoSize = true;
-            this.lblTrangThai.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTrangThai.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrangThai.Location = new System.Drawing.Point(19, 4);
-            this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(252, 16);
-            this.lblTrangThai.TabIndex = 7;
-            this.lblTrangThai.Text = "Trạng thái";
-            this.lblTrangThai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.txtKhoa, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.lblKhoa, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.txtGioitinh, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.lblGioitinh, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 103);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(548, 47);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(273, 52);
-            this.tableLayoutPanel4.TabIndex = 14;
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel4.TabIndex = 15;
             // 
-            // txtKhoa
+            // txtGioitinh
             // 
-            this.txtKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtKhoa.Location = new System.Drawing.Point(19, 23);
-            this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(251, 20);
-            this.txtKhoa.TabIndex = 18;
+            this.txtGioitinh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtGioitinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtGioitinh.FormattingEnabled = true;
+            this.txtGioitinh.Location = new System.Drawing.Point(19, 28);
+            this.txtGioitinh.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.txtGioitinh.Name = "txtGioitinh";
+            this.txtGioitinh.Size = new System.Drawing.Size(247, 21);
+            this.txtGioitinh.TabIndex = 18;
             // 
-            // lblKhoa
+            // lblGioitinh
             // 
-            this.lblKhoa.AutoSize = true;
-            this.lblKhoa.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblKhoa.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKhoa.Location = new System.Drawing.Point(19, 4);
-            this.lblKhoa.Name = "lblKhoa";
-            this.lblKhoa.Size = new System.Drawing.Size(251, 16);
-            this.lblKhoa.TabIndex = 7;
-            this.lblKhoa.Text = "Khoa";
-            this.lblKhoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblGioitinh.AutoSize = true;
+            this.lblGioitinh.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblGioitinh.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblGioitinh.Location = new System.Drawing.Point(19, 6);
+            this.lblGioitinh.Name = "lblGioitinh";
+            this.lblGioitinh.Size = new System.Drawing.Size(247, 19);
+            this.lblGioitinh.TabIndex = 7;
+            this.lblGioitinh.Text = "Giới tính";
+            this.lblGioitinh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Controls.Add(this.txtFullname, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.lblFullname, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(279, 47);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel7.TabIndex = 14;
+            // 
+            // txtFullname
+            // 
+            this.txtFullname.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFullname.Location = new System.Drawing.Point(19, 28);
+            this.txtFullname.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.txtFullname.Name = "txtFullname";
+            this.txtFullname.Size = new System.Drawing.Size(247, 20);
+            this.txtFullname.TabIndex = 9;
+            // 
+            // lblFullname
+            // 
+            this.lblFullname.AutoSize = true;
+            this.lblFullname.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblFullname.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblFullname.Location = new System.Drawing.Point(19, 6);
+            this.lblFullname.Name = "lblFullname";
+            this.lblFullname.Size = new System.Drawing.Size(247, 19);
+            this.lblFullname.TabIndex = 7;
+            this.lblFullname.Text = "Họ và tên";
+            this.lblFullname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.ColumnCount = 2;
             this.pnlActionButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.pnlActionButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnlActionButtons.Controls.Add(this.btnSearch, 1, 1);
-            this.pnlActionButtons.Controls.Add(this.btnDelete, 0, 1);
-            this.pnlActionButtons.Controls.Add(this.btnEdit, 1, 0);
-            this.pnlActionButtons.Controls.Add(this.btnAdd, 0, 0);
+            this.pnlActionButtons.Controls.Add(this.btnRefresh, 1, 0);
+            this.pnlActionButtons.Controls.Add(this.btnDelete, 0, 0);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActionButtons.Location = new System.Drawing.Point(547, 103);
+            this.pnlActionButtons.Location = new System.Drawing.Point(548, 167);
             this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActionButtons.Name = "pnlActionButtons";
-            this.pnlActionButtons.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
-            this.pnlActionButtons.RowCount = 2;
-            this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnlActionButtons.Size = new System.Drawing.Size(274, 52);
+            this.pnlActionButtons.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
+            this.pnlActionButtons.RowCount = 1;
+            this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.pnlActionButtons.Size = new System.Drawing.Size(269, 60);
             this.pnlActionButtons.TabIndex = 12;
             // 
-            // btnSearch
+            // btnRefresh
             // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(150, 26);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(124, 26);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.Text = "Tìm kiếm";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRefresh.Location = new System.Drawing.Point(152, 8);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(9, 8, 0, 0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(117, 52);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDelete.Location = new System.Drawing.Point(16, 26);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.btnDelete.Location = new System.Drawing.Point(18, 8);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 8, 9, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(124, 26);
+            this.btnDelete.Size = new System.Drawing.Size(116, 52);
             this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEdit.Location = new System.Drawing.Point(150, 0);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(124, 26);
-            this.btnEdit.TabIndex = 15;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAdd.Location = new System.Drawing.Point(16, 0);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(124, 26);
-            this.btnAdd.TabIndex = 14;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -506,14 +543,15 @@ namespace QLSV
             this.tableLayoutPanel1.Controls.Add(this.txtMssv, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblMSSV, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 47);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(273, 60);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 60);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // txtMssv
@@ -522,20 +560,75 @@ namespace QLSV
             this.txtMssv.Location = new System.Drawing.Point(19, 28);
             this.txtMssv.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtMssv.Name = "txtMssv";
-            this.txtMssv.Size = new System.Drawing.Size(251, 20);
+            this.txtMssv.Size = new System.Drawing.Size(247, 20);
             this.txtMssv.TabIndex = 9;
             // 
             // lblMSSV
             // 
             this.lblMSSV.AutoSize = true;
             this.lblMSSV.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblMSSV.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMSSV.Location = new System.Drawing.Point(19, 9);
+            this.lblMSSV.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblMSSV.Location = new System.Drawing.Point(19, 6);
             this.lblMSSV.Name = "lblMSSV";
-            this.lblMSSV.Size = new System.Drawing.Size(251, 16);
+            this.lblMSSV.Size = new System.Drawing.Size(247, 19);
             this.lblMSSV.TabIndex = 7;
             this.lblMSSV.Text = "MSSV";
             this.lblMSSV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblThongtinchitiet
+            // 
+            this.lblThongtinchitiet.AutoSize = true;
+            this.lblThongtinchitiet.BackColor = System.Drawing.Color.White;
+            this.lblThongtinchitiet.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblThongtinchitiet.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblThongtinchitiet.Location = new System.Drawing.Point(13, 12);
+            this.lblThongtinchitiet.Margin = new System.Windows.Forms.Padding(3, 12, 3, 5);
+            this.lblThongtinchitiet.Name = "lblThongtinchitiet";
+            this.lblThongtinchitiet.Size = new System.Drawing.Size(263, 30);
+            this.lblThongtinchitiet.TabIndex = 6;
+            this.lblThongtinchitiet.Text = "  Thông tin chi tiết";
+            this.lblThongtinchitiet.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.txtNgaySinh, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblNgaySinh, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 107);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel2.TabIndex = 16;
+            // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.CustomFormat = "dd/MM/yyyy";
+            this.txtNgaySinh.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtNgaySinh.Location = new System.Drawing.Point(19, 28);
+            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Size = new System.Drawing.Size(247, 20);
+            this.txtNgaySinh.TabIndex = 20;
+            // 
+            // lblNgaySinh
+            // 
+            this.lblNgaySinh.AutoSize = true;
+            this.lblNgaySinh.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblNgaySinh.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblNgaySinh.Location = new System.Drawing.Point(19, 6);
+            this.lblNgaySinh.Name = "lblNgaySinh";
+            this.lblNgaySinh.Size = new System.Drawing.Size(247, 19);
+            this.lblNgaySinh.TabIndex = 7;
+            this.lblNgaySinh.Text = "Ngày sinh";
+            this.lblNgaySinh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
             // 
@@ -544,50 +637,157 @@ namespace QLSV
             this.tableLayoutPanel3.Controls.Add(this.txtLop, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblLop, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(547, 43);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(279, 107);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(274, 60);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(269, 60);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // txtLop
             // 
             this.txtLop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtLop.FormattingEnabled = true;
             this.txtLop.Location = new System.Drawing.Point(19, 28);
             this.txtLop.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(252, 20);
+            this.txtLop.Size = new System.Drawing.Size(247, 21);
             this.txtLop.TabIndex = 17;
             // 
             // lblLop
             // 
             this.lblLop.AutoSize = true;
             this.lblLop.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblLop.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLop.Location = new System.Drawing.Point(19, 9);
+            this.lblLop.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblLop.Location = new System.Drawing.Point(19, 6);
             this.lblLop.Name = "lblLop";
-            this.lblLop.Size = new System.Drawing.Size(252, 16);
+            this.lblLop.Size = new System.Drawing.Size(247, 19);
             this.lblLop.TabIndex = 7;
             this.lblLop.Text = "Lớp";
             this.lblLop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblTimkiemchitiet
+            // tableLayoutPanel5
             // 
-            this.lblTimkiemchitiet.AutoSize = true;
-            this.lblTimkiemchitiet.BackColor = System.Drawing.Color.White;
-            this.lblTimkiemchitiet.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTimkiemchitiet.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimkiemchitiet.Location = new System.Drawing.Point(3, 13);
-            this.lblTimkiemchitiet.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.lblTimkiemchitiet.Name = "lblTimkiemchitiet";
-            this.lblTimkiemchitiet.Size = new System.Drawing.Size(267, 25);
-            this.lblTimkiemchitiet.TabIndex = 6;
-            this.lblTimkiemchitiet.Text = "  Tìm kiếm chi tiết";
-            this.lblTimkiemchitiet.Click += new System.EventHandler(this.label4_Click);
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.txtTrangThai, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lblTrangThai, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(10, 167);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel5.TabIndex = 14;
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTrangThai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtTrangThai.FormattingEnabled = true;
+            this.txtTrangThai.Location = new System.Drawing.Point(19, 28);
+            this.txtTrangThai.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(247, 21);
+            this.txtTrangThai.TabIndex = 10;
+            // 
+            // lblTrangThai
+            // 
+            this.lblTrangThai.AutoSize = true;
+            this.lblTrangThai.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblTrangThai.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblTrangThai.Location = new System.Drawing.Point(19, 6);
+            this.lblTrangThai.Name = "lblTrangThai";
+            this.lblTrangThai.Size = new System.Drawing.Size(247, 19);
+            this.lblTrangThai.TabIndex = 7;
+            this.lblTrangThai.Text = "Trạng thái";
+            this.lblTrangThai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.btnEdit, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btnAdd, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(279, 167);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel9.TabIndex = 20;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEdit.Location = new System.Drawing.Point(152, 8);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(9, 8, 0, 0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(117, 52);
+            this.btnEdit.TabIndex = 16;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.Location = new System.Drawing.Point(18, 8);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 8, 9, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(116, 52);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.txtKhoa, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.lblKhoa, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(548, 107);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(269, 60);
+            this.tableLayoutPanel8.TabIndex = 21;
+            // 
+            // txtKhoa
+            // 
+            this.txtKhoa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtKhoa.FormattingEnabled = true;
+            this.txtKhoa.Location = new System.Drawing.Point(19, 28);
+            this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.txtKhoa.Name = "txtKhoa";
+            this.txtKhoa.Size = new System.Drawing.Size(247, 21);
+            this.txtKhoa.TabIndex = 18;
+            // 
+            // lblKhoa
+            // 
+            this.lblKhoa.AutoSize = true;
+            this.lblKhoa.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblKhoa.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblKhoa.Location = new System.Drawing.Point(19, 6);
+            this.lblKhoa.Name = "lblKhoa";
+            this.lblKhoa.Size = new System.Drawing.Size(247, 19);
+            this.lblKhoa.TabIndex = 7;
+            this.lblKhoa.Text = "Khoa";
+            this.lblKhoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlTongQuan
             // 
@@ -597,31 +797,29 @@ namespace QLSV
             this.pnlTongQuan.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTongQuan.Location = new System.Drawing.Point(0, 0);
             this.pnlTongQuan.Name = "pnlTongQuan";
-            this.pnlTongQuan.Size = new System.Drawing.Size(902, 161);
+            this.pnlTongQuan.Size = new System.Drawing.Size(920, 173);
             this.pnlTongQuan.TabIndex = 8;
             // 
             // pnlSoLieuThongKe
             // 
-            this.pnlSoLieuThongKe.AutoSize = true;
             this.pnlSoLieuThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pnlSoLieuThongKe.ColumnCount = 7;
-            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.pnlSoLieuThongKe.Controls.Add(this.pnlSVmoi, 3, 0);
             this.pnlSoLieuThongKe.Controls.Add(this.pnlSoLop, 5, 0);
             this.pnlSoLieuThongKe.Controls.Add(this.pnlTongSV, 1, 0);
             this.pnlSoLieuThongKe.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSoLieuThongKe.Location = new System.Drawing.Point(0, 61);
             this.pnlSoLieuThongKe.Name = "pnlSoLieuThongKe";
-            this.pnlSoLieuThongKe.RowCount = 2;
-            this.pnlSoLieuThongKe.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.pnlSoLieuThongKe.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnlSoLieuThongKe.Size = new System.Drawing.Size(902, 100);
+            this.pnlSoLieuThongKe.RowCount = 1;
+            this.pnlSoLieuThongKe.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.pnlSoLieuThongKe.Size = new System.Drawing.Size(920, 112);
             this.pnlSoLieuThongKe.TabIndex = 9;
             // 
             // pnlSVmoi
@@ -632,40 +830,42 @@ namespace QLSV
             this.pnlSVmoi.Controls.Add(this.pictureSVmoi);
             this.pnlSVmoi.Controls.Add(this.solieuSVmoi);
             this.pnlSVmoi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSVmoi.Location = new System.Drawing.Point(313, 0);
+            this.pnlSVmoi.Location = new System.Drawing.Point(328, 0);
             this.pnlSVmoi.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSVmoi.Name = "pnlSVmoi";
-            this.pnlSVmoi.Size = new System.Drawing.Size(273, 80);
+            this.pnlSVmoi.Size = new System.Drawing.Size(263, 112);
             this.pnlSVmoi.TabIndex = 5;
             // 
             // lblSVmoi
             // 
             this.lblSVmoi.AutoSize = true;
-            this.lblSVmoi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSVmoi.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.lblSVmoi.ForeColor = System.Drawing.Color.Black;
             this.lblSVmoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSVmoi.Location = new System.Drawing.Point(15, 13);
+            this.lblSVmoi.Location = new System.Drawing.Point(23, 18);
             this.lblSVmoi.Name = "lblSVmoi";
-            this.lblSVmoi.Size = new System.Drawing.Size(85, 17);
+            this.lblSVmoi.Size = new System.Drawing.Size(119, 25);
             this.lblSVmoi.TabIndex = 7;
             this.lblSVmoi.Text = "Sinh viên mới";
             this.lblSVmoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureSVmoi
             // 
-            this.pictureSVmoi.Location = new System.Drawing.Point(205, 13);
+            this.pictureSVmoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureSVmoi.BackColor = System.Drawing.Color.White;
+            this.pictureSVmoi.Location = new System.Drawing.Point(173, 24);
             this.pictureSVmoi.Name = "pictureSVmoi";
-            this.pictureSVmoi.Size = new System.Drawing.Size(50, 50);
+            this.pictureSVmoi.Size = new System.Drawing.Size(72, 72);
             this.pictureSVmoi.TabIndex = 6;
             this.pictureSVmoi.TabStop = false;
             // 
             // solieuSVmoi
             // 
             this.solieuSVmoi.AutoSize = true;
-            this.solieuSVmoi.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.solieuSVmoi.Location = new System.Drawing.Point(11, 32);
+            this.solieuSVmoi.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.solieuSVmoi.Location = new System.Drawing.Point(21, 47);
             this.solieuSVmoi.Name = "solieuSVmoi";
-            this.solieuSVmoi.Size = new System.Drawing.Size(103, 37);
+            this.solieuSVmoi.Size = new System.Drawing.Size(121, 45);
             this.solieuSVmoi.TabIndex = 4;
             this.solieuSVmoi.Text = "Số liệu";
             // 
@@ -677,40 +877,42 @@ namespace QLSV
             this.pnlSoLop.Controls.Add(this.pictureSoLop);
             this.pnlSoLop.Controls.Add(this.solieuSoLop);
             this.pnlSoLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSoLop.Location = new System.Drawing.Point(598, 0);
+            this.pnlSoLop.Location = new System.Drawing.Point(621, 0);
             this.pnlSoLop.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSoLop.Name = "pnlSoLop";
-            this.pnlSoLop.Size = new System.Drawing.Size(273, 80);
+            this.pnlSoLop.Size = new System.Drawing.Size(263, 112);
             this.pnlSoLop.TabIndex = 5;
             // 
             // lblSoLop
             // 
             this.lblSoLop.AutoSize = true;
-            this.lblSoLop.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoLop.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.lblSoLop.ForeColor = System.Drawing.Color.Black;
             this.lblSoLop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSoLop.Location = new System.Drawing.Point(15, 13);
+            this.lblSoLop.Location = new System.Drawing.Point(23, 18);
             this.lblSoLop.Name = "lblSoLop";
-            this.lblSoLop.Size = new System.Drawing.Size(71, 17);
+            this.lblSoLop.Size = new System.Drawing.Size(98, 25);
             this.lblSoLop.TabIndex = 7;
             this.lblSoLop.Text = "Số lớp học";
             this.lblSoLop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureSoLop
             // 
-            this.pictureSoLop.Location = new System.Drawing.Point(205, 13);
+            this.pictureSoLop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureSoLop.BackColor = System.Drawing.Color.White;
+            this.pictureSoLop.Location = new System.Drawing.Point(173, 24);
             this.pictureSoLop.Name = "pictureSoLop";
-            this.pictureSoLop.Size = new System.Drawing.Size(50, 50);
+            this.pictureSoLop.Size = new System.Drawing.Size(72, 72);
             this.pictureSoLop.TabIndex = 6;
             this.pictureSoLop.TabStop = false;
             // 
             // solieuSoLop
             // 
             this.solieuSoLop.AutoSize = true;
-            this.solieuSoLop.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.solieuSoLop.Location = new System.Drawing.Point(11, 32);
+            this.solieuSoLop.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.solieuSoLop.Location = new System.Drawing.Point(21, 47);
             this.solieuSoLop.Name = "solieuSoLop";
-            this.solieuSoLop.Size = new System.Drawing.Size(103, 37);
+            this.solieuSoLop.Size = new System.Drawing.Size(121, 45);
             this.solieuSoLop.TabIndex = 4;
             this.solieuSoLop.Text = "Số liệu";
             // 
@@ -722,29 +924,31 @@ namespace QLSV
             this.pnlTongSV.Controls.Add(this.lblTongSV);
             this.pnlTongSV.Controls.Add(this.solieuTongSV);
             this.pnlTongSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTongSV.Location = new System.Drawing.Point(28, 0);
+            this.pnlTongSV.Location = new System.Drawing.Point(35, 0);
             this.pnlTongSV.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTongSV.Name = "pnlTongSV";
-            this.pnlTongSV.Size = new System.Drawing.Size(273, 80);
+            this.pnlTongSV.Size = new System.Drawing.Size(263, 112);
             this.pnlTongSV.TabIndex = 5;
             // 
             // pictureTongSV
             // 
-            this.pictureTongSV.Location = new System.Drawing.Point(205, 13);
+            this.pictureTongSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureTongSV.BackColor = System.Drawing.Color.White;
+            this.pictureTongSV.Location = new System.Drawing.Point(173, 24);
             this.pictureTongSV.Name = "pictureTongSV";
-            this.pictureTongSV.Size = new System.Drawing.Size(50, 50);
+            this.pictureTongSV.Size = new System.Drawing.Size(72, 72);
             this.pictureTongSV.TabIndex = 6;
             this.pictureTongSV.TabStop = false;
             // 
             // lblTongSV
             // 
             this.lblTongSV.AutoSize = true;
-            this.lblTongSV.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTongSV.Font = new System.Drawing.Font("Segoe UI", 13F);
             this.lblTongSV.ForeColor = System.Drawing.Color.Black;
             this.lblTongSV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblTongSV.Location = new System.Drawing.Point(15, 13);
+            this.lblTongSV.Location = new System.Drawing.Point(23, 18);
             this.lblTongSV.Name = "lblTongSV";
-            this.lblTongSV.Size = new System.Drawing.Size(110, 17);
+            this.lblTongSV.Size = new System.Drawing.Size(151, 25);
             this.lblTongSV.TabIndex = 4;
             this.lblTongSV.Text = "Tổng số sinh viên";
             this.lblTongSV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -752,10 +956,10 @@ namespace QLSV
             // solieuTongSV
             // 
             this.solieuTongSV.AutoSize = true;
-            this.solieuTongSV.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.solieuTongSV.Location = new System.Drawing.Point(11, 32);
+            this.solieuTongSV.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.solieuTongSV.Location = new System.Drawing.Point(21, 47);
             this.solieuTongSV.Name = "solieuTongSV";
-            this.solieuTongSV.Size = new System.Drawing.Size(103, 37);
+            this.solieuTongSV.Size = new System.Drawing.Size(121, 45);
             this.solieuTongSV.TabIndex = 4;
             this.solieuTongSV.Text = "Số liệu";
             // 
@@ -766,14 +970,14 @@ namespace QLSV
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(902, 61);
+            this.panel8.Size = new System.Drawing.Size(920, 61);
             this.panel8.TabIndex = 8;
             // 
             // lblTongQuan
             // 
             this.lblTongQuan.AutoSize = true;
             this.lblTongQuan.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTongQuan.Location = new System.Drawing.Point(25, 17);
+            this.lblTongQuan.Location = new System.Drawing.Point(39, 17);
             this.lblTongQuan.Name = "lblTongQuan";
             this.lblTongQuan.Size = new System.Drawing.Size(138, 32);
             this.lblTongQuan.TabIndex = 7;
@@ -788,7 +992,7 @@ namespace QLSV
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(230, 625);
+            this.pnlSidebar.Size = new System.Drawing.Size(230, 696);
             this.pnlSidebar.TabIndex = 0;
             this.pnlSidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -796,7 +1000,7 @@ namespace QLSV
             // 
             this.btnCaiDat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCaiDat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnCaiDat.Location = new System.Drawing.Point(0, 583);
+            this.btnCaiDat.Location = new System.Drawing.Point(0, 654);
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnCaiDat.Size = new System.Drawing.Size(230, 42);
@@ -951,13 +1155,15 @@ namespace QLSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 625);
+            this.ClientSize = new System.Drawing.Size(1150, 696);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.pnlTopbar);
             this.Controls.Add(this.pnlSidebar);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.pnlTopbar.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             this.pnlThongtincanhan.ResumeLayout(false);
             this.pnlThongtincanhan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgAvt)).EndInit();
@@ -970,19 +1176,23 @@ namespace QLSV
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDSSV)).EndInit();
             this.pnlActions.ResumeLayout(false);
             this.pnlActions.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.pnlActionButtons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.pnlTongQuan.ResumeLayout(false);
-            this.pnlTongQuan.PerformLayout();
             this.pnlSoLieuThongKe.ResumeLayout(false);
             this.pnlSoLieuThongKe.PerformLayout();
             this.pnlSVmoi.ResumeLayout(false);
@@ -1009,9 +1219,6 @@ namespace QLSV
         private System.Windows.Forms.Panel pnlTopbar;
         private System.Windows.Forms.Panel pnlMainContent;
         private System.Windows.Forms.Panel pnlSidebar;
-        private System.Windows.Forms.PictureBox imgAvt;
-        private System.Windows.Forms.PictureBox imgNotification;
-        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.Label lblLogoName;
@@ -1024,7 +1231,6 @@ namespace QLSV
         private System.Windows.Forms.Button btnSinhVien;
         private System.Windows.Forms.Button btnLopHoc;
         private System.Windows.Forms.Button btnTongQuan;
-        private System.Windows.Forms.Panel pnlThongtincanhan;
         private System.Windows.Forms.Panel pnlTongQuan;
         private System.Windows.Forms.TableLayoutPanel pnlSoLieuThongKe;
         private System.Windows.Forms.Panel pnlSVmoi;
@@ -1044,33 +1250,50 @@ namespace QLSV
         private System.Windows.Forms.TableLayoutPanel pnlDashboard;
         private System.Windows.Forms.TableLayoutPanel pnlStudentList;
         private System.Windows.Forms.DataGridView dataGridDSSV;
+        private System.Windows.Forms.Label lblDSSVTitle;
+        private System.Windows.Forms.Label lblThongtinchitiet;
+        private System.Windows.Forms.TableLayoutPanel pnlActions;
+        private System.Windows.Forms.TableLayoutPanel pnlActionButtons;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox txtMssv;
+        private System.Windows.Forms.Label lblMSSV;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label lblLop;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.DateTimePicker txtNgaySinh;
+        private System.Windows.Forms.Label lblNgaySinh;
+        private System.Windows.Forms.ComboBox txtLop;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.ComboBox txtTrangThai;
+        private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.DataGridViewTextBoxColumn MSSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gioitinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngaysinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn lop;
         private System.Windows.Forms.DataGridViewTextBoxColumn khoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn trangthai;
-        private System.Windows.Forms.Label lblDSSVTitle;
-        private System.Windows.Forms.Label lblTimkiemchitiet;
-        private System.Windows.Forms.TableLayoutPanel pnlActions;
-        private System.Windows.Forms.TableLayoutPanel pnlActionButtons;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TextBox txtFullname;
+        private System.Windows.Forms.Label lblFullname;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtMssv;
-        private System.Windows.Forms.Label lblMSSV;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txtTrangThai;
-        private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TextBox txtKhoa;
+        private System.Windows.Forms.ComboBox txtGioitinh;
+        private System.Windows.Forms.Label lblGioitinh;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.ComboBox txtKhoa;
         private System.Windows.Forms.Label lblKhoa;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label lblLop;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox txtNgaySinh;
-        private System.Windows.Forms.Label lblNgaySinh;
-        private System.Windows.Forms.TextBox txtLop;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.PictureBox imgAvt;
+        private System.Windows.Forms.PictureBox imgNotification;
+        private System.Windows.Forms.Panel pnlThongtincanhan;
     }
 }
