@@ -35,7 +35,7 @@ namespace QLSV
             this.lblUsername = new System.Windows.Forms.Label();
             this.imgAvt = new System.Windows.Forms.PictureBox();
             this.imgNotification = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlMainContent = new System.Windows.Forms.Panel();
@@ -82,9 +82,9 @@ namespace QLSV
             this.pnlTongQuan = new System.Windows.Forms.Panel();
             this.pnlSoLieuThongKe = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSVmoi = new System.Windows.Forms.Panel();
-            this.lblSVmoi = new System.Windows.Forms.Label();
+            this.lblSV = new System.Windows.Forms.Label();
             this.pictureSVmoi = new System.Windows.Forms.PictureBox();
-            this.solieuSVmoi = new System.Windows.Forms.Label();
+            this.solieuSV = new System.Windows.Forms.Label();
             this.pnlSoLop = new System.Windows.Forms.Panel();
             this.lblSoLop = new System.Windows.Forms.Label();
             this.pictureSoLop = new System.Windows.Forms.PictureBox();
@@ -150,7 +150,7 @@ namespace QLSV
             this.pnlTopbar.Location = new System.Drawing.Point(230, 0);
             this.pnlTopbar.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.pnlTopbar.Name = "pnlTopbar";
-            this.pnlTopbar.Size = new System.Drawing.Size(920, 65);
+            this.pnlTopbar.Size = new System.Drawing.Size(951, 65);
             this.pnlTopbar.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -162,7 +162,7 @@ namespace QLSV
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel6.Controls.Add(this.pnlThongtincanhan, 3, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txtSearch, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnSearch, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -171,7 +171,7 @@ namespace QLSV
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(920, 65);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(951, 65);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
             // pnlThongtincanhan
@@ -180,7 +180,7 @@ namespace QLSV
             this.pnlThongtincanhan.Controls.Add(this.imgAvt);
             this.pnlThongtincanhan.Controls.Add(this.imgNotification);
             this.pnlThongtincanhan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlThongtincanhan.Location = new System.Drawing.Point(767, 0);
+            this.pnlThongtincanhan.Location = new System.Drawing.Point(798, 0);
             this.pnlThongtincanhan.Margin = new System.Windows.Forms.Padding(0);
             this.pnlThongtincanhan.Name = "pnlThongtincanhan";
             this.pnlThongtincanhan.Size = new System.Drawing.Size(153, 65);
@@ -225,14 +225,14 @@ namespace QLSV
             this.imgNotification.TabStop = false;
             this.imgNotification.Click += new System.EventHandler(this.imgNotification_Click);
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(213, 20);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 20);
-            this.textBox1.TabIndex = 20;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.Location = new System.Drawing.Point(213, 22);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 22, 3, 0);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(225, 20);
+            this.txtSearch.TabIndex = 20;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
             // 
@@ -269,7 +269,7 @@ namespace QLSV
             this.pnlMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainContent.Location = new System.Drawing.Point(230, 65);
             this.pnlMainContent.Name = "pnlMainContent";
-            this.pnlMainContent.Size = new System.Drawing.Size(920, 631);
+            this.pnlMainContent.Size = new System.Drawing.Size(951, 631);
             this.pnlMainContent.TabIndex = 1;
             this.pnlMainContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -290,7 +290,7 @@ namespace QLSV
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlDashboard.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.pnlDashboard.Size = new System.Drawing.Size(920, 458);
+            this.pnlDashboard.Size = new System.Drawing.Size(951, 458);
             this.pnlDashboard.TabIndex = 10;
             this.pnlDashboard.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint_2);
             // 
@@ -305,16 +305,18 @@ namespace QLSV
             this.pnlStudentList.Location = new System.Drawing.Point(35, 280);
             this.pnlStudentList.Margin = new System.Windows.Forms.Padding(0);
             this.pnlStudentList.Name = "pnlStudentList";
-            this.pnlStudentList.Padding = new System.Windows.Forms.Padding(3);
             this.pnlStudentList.RowCount = 2;
             this.pnlStudentList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlStudentList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlStudentList.Size = new System.Drawing.Size(850, 153);
+            this.pnlStudentList.Size = new System.Drawing.Size(881, 153);
             this.pnlStudentList.TabIndex = 7;
             // 
             // dataGridDSSV
             // 
+            this.dataGridDSSV.AllowUserToAddRows = false;
+            this.dataGridDSSV.AllowUserToDeleteRows = false;
             this.dataGridDSSV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridDSSV.BackgroundColor = System.Drawing.Color.White;
             this.dataGridDSSV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MSSV,
             this.fullname,
@@ -324,11 +326,13 @@ namespace QLSV
             this.khoa,
             this.trangthai});
             this.dataGridDSSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridDSSV.Location = new System.Drawing.Point(3, 48);
-            this.dataGridDSSV.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridDSSV.Location = new System.Drawing.Point(28, 50);
+            this.dataGridDSSV.Margin = new System.Windows.Forms.Padding(28, 5, 32, 16);
             this.dataGridDSSV.Name = "dataGridDSSV";
-            this.dataGridDSSV.Size = new System.Drawing.Size(844, 102);
-            this.dataGridDSSV.TabIndex = 6;
+            this.dataGridDSSV.ReadOnly = true;
+            this.dataGridDSSV.RowHeadersVisible = false;
+            this.dataGridDSSV.Size = new System.Drawing.Size(821, 87);
+            this.dataGridDSSV.TabIndex = 20;
             this.dataGridDSSV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // MSSV
@@ -336,42 +340,49 @@ namespace QLSV
             this.MSSV.FillWeight = 51.94611F;
             this.MSSV.HeaderText = "MSSV";
             this.MSSV.Name = "MSSV";
+            this.MSSV.ReadOnly = true;
             // 
             // fullname
             // 
             this.fullname.FillWeight = 117.3749F;
             this.fullname.HeaderText = "Họ và tên";
             this.fullname.Name = "fullname";
+            this.fullname.ReadOnly = true;
             // 
             // gioitinh
             // 
             this.gioitinh.FillWeight = 47.94086F;
             this.gioitinh.HeaderText = "Giới tính";
             this.gioitinh.Name = "gioitinh";
+            this.gioitinh.ReadOnly = true;
             // 
             // Ngaysinh
             // 
             this.Ngaysinh.FillWeight = 93.8999F;
             this.Ngaysinh.HeaderText = "Ngày sinh";
             this.Ngaysinh.Name = "Ngaysinh";
+            this.Ngaysinh.ReadOnly = true;
             // 
             // lop
             // 
             this.lop.FillWeight = 80.44489F;
             this.lop.HeaderText = "Lớp";
             this.lop.Name = "lop";
+            this.lop.ReadOnly = true;
             // 
             // khoa
             // 
             this.khoa.FillWeight = 74.8298F;
             this.khoa.HeaderText = "Khoa";
             this.khoa.Name = "khoa";
+            this.khoa.ReadOnly = true;
             // 
             // trangthai
             // 
             this.trangthai.FillWeight = 100.5432F;
             this.trangthai.HeaderText = "Trạng thái";
             this.trangthai.Name = "trangthai";
+            this.trangthai.ReadOnly = true;
             // 
             // lblDSSVTitle
             // 
@@ -379,10 +390,10 @@ namespace QLSV
             this.lblDSSVTitle.BackColor = System.Drawing.Color.White;
             this.lblDSSVTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDSSVTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblDSSVTitle.Location = new System.Drawing.Point(25, 15);
+            this.lblDSSVTitle.Location = new System.Drawing.Point(22, 12);
             this.lblDSSVTitle.Margin = new System.Windows.Forms.Padding(22, 12, 3, 5);
             this.lblDSSVTitle.Name = "lblDSSVTitle";
-            this.lblDSSVTitle.Size = new System.Drawing.Size(819, 28);
+            this.lblDSSVTitle.Size = new System.Drawing.Size(856, 28);
             this.lblDSSVTitle.TabIndex = 4;
             this.lblDSSVTitle.Text = "Danh sách sinh viên";
             this.lblDSSVTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -396,7 +407,7 @@ namespace QLSV
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.pnlActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.pnlActions.Controls.Add(this.tableLayoutPanel4, 3, 1);
             this.pnlActions.Controls.Add(this.tableLayoutPanel7, 2, 1);
             this.pnlActions.Controls.Add(this.pnlActionButtons, 3, 3);
@@ -417,7 +428,7 @@ namespace QLSV
             this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.pnlActions.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.pnlActions.Size = new System.Drawing.Size(850, 240);
+            this.pnlActions.Size = new System.Drawing.Size(881, 240);
             this.pnlActions.TabIndex = 8;
             this.pnlActions.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel4_Paint);
             // 
@@ -428,15 +439,15 @@ namespace QLSV
             this.tableLayoutPanel4.Controls.Add(this.txtGioitinh, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.lblGioitinh, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(546, 47);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(564, 47);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel4.TabIndex = 15;
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel4.TabIndex = 2;
             // 
             // txtGioitinh
             // 
@@ -446,8 +457,8 @@ namespace QLSV
             this.txtGioitinh.Location = new System.Drawing.Point(19, 28);
             this.txtGioitinh.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtGioitinh.Name = "txtGioitinh";
-            this.txtGioitinh.Size = new System.Drawing.Size(246, 21);
-            this.txtGioitinh.TabIndex = 18;
+            this.txtGioitinh.Size = new System.Drawing.Size(255, 21);
+            this.txtGioitinh.TabIndex = 2;
             // 
             // lblGioitinh
             // 
@@ -456,7 +467,7 @@ namespace QLSV
             this.lblGioitinh.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblGioitinh.Location = new System.Drawing.Point(19, 6);
             this.lblGioitinh.Name = "lblGioitinh";
-            this.lblGioitinh.Size = new System.Drawing.Size(246, 19);
+            this.lblGioitinh.Size = new System.Drawing.Size(255, 19);
             this.lblGioitinh.TabIndex = 7;
             this.lblGioitinh.Text = "Giới tính";
             this.lblGioitinh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -468,7 +479,7 @@ namespace QLSV
             this.tableLayoutPanel7.Controls.Add(this.txtFullname, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.lblFullname, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(278, 47);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(287, 47);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
@@ -476,8 +487,8 @@ namespace QLSV
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel7.TabIndex = 14;
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel7.TabIndex = 1;
             // 
             // txtFullname
             // 
@@ -485,8 +496,8 @@ namespace QLSV
             this.txtFullname.Location = new System.Drawing.Point(19, 28);
             this.txtFullname.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtFullname.Name = "txtFullname";
-            this.txtFullname.Size = new System.Drawing.Size(246, 20);
-            this.txtFullname.TabIndex = 9;
+            this.txtFullname.Size = new System.Drawing.Size(255, 20);
+            this.txtFullname.TabIndex = 1;
             // 
             // lblFullname
             // 
@@ -495,7 +506,7 @@ namespace QLSV
             this.lblFullname.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblFullname.Location = new System.Drawing.Point(19, 6);
             this.lblFullname.Name = "lblFullname";
-            this.lblFullname.Size = new System.Drawing.Size(246, 19);
+            this.lblFullname.Size = new System.Drawing.Size(255, 19);
             this.lblFullname.TabIndex = 7;
             this.lblFullname.Text = "Họ và tên";
             this.lblFullname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -508,15 +519,15 @@ namespace QLSV
             this.pnlActionButtons.Controls.Add(this.btnRefresh, 1, 0);
             this.pnlActionButtons.Controls.Add(this.btnDelete, 0, 0);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActionButtons.Location = new System.Drawing.Point(546, 167);
+            this.pnlActionButtons.Location = new System.Drawing.Point(564, 167);
             this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(0);
             this.pnlActionButtons.Name = "pnlActionButtons";
             this.pnlActionButtons.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.pnlActionButtons.RowCount = 1;
             this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlActionButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.pnlActionButtons.Size = new System.Drawing.Size(268, 60);
-            this.pnlActionButtons.TabIndex = 12;
+            this.pnlActionButtons.Size = new System.Drawing.Size(277, 60);
+            this.pnlActionButtons.TabIndex = 8;
             this.pnlActionButtons.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlActionButtons_Paint);
             // 
             // btnRefresh
@@ -525,11 +536,11 @@ namespace QLSV
             this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(152, 8);
+            this.btnRefresh.Location = new System.Drawing.Point(156, 8);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(9, 8, 0, 0);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(116, 52);
-            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Size = new System.Drawing.Size(121, 52);
+            this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.UseVisualStyleBackColor = false;
             // 
@@ -542,8 +553,8 @@ namespace QLSV
             this.btnDelete.Location = new System.Drawing.Point(18, 8);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0, 8, 9, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(116, 52);
-            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Size = new System.Drawing.Size(120, 52);
+            this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
@@ -562,8 +573,8 @@ namespace QLSV
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel1.TabIndex = 13;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // txtMssv
             // 
@@ -571,8 +582,8 @@ namespace QLSV
             this.txtMssv.Location = new System.Drawing.Point(19, 28);
             this.txtMssv.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtMssv.Name = "txtMssv";
-            this.txtMssv.Size = new System.Drawing.Size(246, 20);
-            this.txtMssv.TabIndex = 9;
+            this.txtMssv.Size = new System.Drawing.Size(255, 20);
+            this.txtMssv.TabIndex = 0;
             // 
             // lblMSSV
             // 
@@ -581,7 +592,7 @@ namespace QLSV
             this.lblMSSV.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblMSSV.Location = new System.Drawing.Point(19, 6);
             this.lblMSSV.Name = "lblMSSV";
-            this.lblMSSV.Size = new System.Drawing.Size(246, 19);
+            this.lblMSSV.Size = new System.Drawing.Size(255, 19);
             this.lblMSSV.TabIndex = 7;
             this.lblMSSV.Text = "MSSV";
             this.lblMSSV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -595,7 +606,7 @@ namespace QLSV
             this.lblThongtinchitiet.Location = new System.Drawing.Point(13, 12);
             this.lblThongtinchitiet.Margin = new System.Windows.Forms.Padding(3, 12, 3, 5);
             this.lblThongtinchitiet.Name = "lblThongtinchitiet";
-            this.lblThongtinchitiet.Size = new System.Drawing.Size(262, 30);
+            this.lblThongtinchitiet.Size = new System.Drawing.Size(271, 30);
             this.lblThongtinchitiet.TabIndex = 6;
             this.lblThongtinchitiet.Text = "  Thông tin chi tiết";
             this.lblThongtinchitiet.Click += new System.EventHandler(this.label4_Click);
@@ -615,8 +626,8 @@ namespace QLSV
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel2.TabIndex = 16;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel2.TabIndex = 3;
             // 
             // txtNgaySinh
             // 
@@ -626,8 +637,8 @@ namespace QLSV
             this.txtNgaySinh.Location = new System.Drawing.Point(19, 28);
             this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Size = new System.Drawing.Size(246, 20);
-            this.txtNgaySinh.TabIndex = 20;
+            this.txtNgaySinh.Size = new System.Drawing.Size(255, 20);
+            this.txtNgaySinh.TabIndex = 3;
             // 
             // lblNgaySinh
             // 
@@ -636,7 +647,7 @@ namespace QLSV
             this.lblNgaySinh.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblNgaySinh.Location = new System.Drawing.Point(19, 6);
             this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(246, 19);
+            this.lblNgaySinh.Size = new System.Drawing.Size(255, 19);
             this.lblNgaySinh.TabIndex = 7;
             this.lblNgaySinh.Text = "Ngày sinh";
             this.lblNgaySinh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -648,15 +659,15 @@ namespace QLSV
             this.tableLayoutPanel3.Controls.Add(this.txtLop, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblLop, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(278, 107);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(287, 107);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel3.TabIndex = 14;
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel3.TabIndex = 4;
             // 
             // txtLop
             // 
@@ -666,8 +677,8 @@ namespace QLSV
             this.txtLop.Location = new System.Drawing.Point(19, 28);
             this.txtLop.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(246, 21);
-            this.txtLop.TabIndex = 17;
+            this.txtLop.Size = new System.Drawing.Size(255, 21);
+            this.txtLop.TabIndex = 4;
             // 
             // lblLop
             // 
@@ -676,7 +687,7 @@ namespace QLSV
             this.lblLop.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblLop.Location = new System.Drawing.Point(19, 6);
             this.lblLop.Name = "lblLop";
-            this.lblLop.Size = new System.Drawing.Size(246, 19);
+            this.lblLop.Size = new System.Drawing.Size(255, 19);
             this.lblLop.TabIndex = 7;
             this.lblLop.Text = "Lớp";
             this.lblLop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -695,8 +706,8 @@ namespace QLSV
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel5.TabIndex = 14;
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel5.TabIndex = 6;
             // 
             // txtTrangThai
             // 
@@ -706,7 +717,7 @@ namespace QLSV
             this.txtTrangThai.Location = new System.Drawing.Point(19, 28);
             this.txtTrangThai.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(246, 21);
+            this.txtTrangThai.Size = new System.Drawing.Size(255, 21);
             this.txtTrangThai.TabIndex = 10;
             // 
             // lblTrangThai
@@ -716,7 +727,7 @@ namespace QLSV
             this.lblTrangThai.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblTrangThai.Location = new System.Drawing.Point(19, 6);
             this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(246, 19);
+            this.lblTrangThai.Size = new System.Drawing.Size(255, 19);
             this.lblTrangThai.TabIndex = 7;
             this.lblTrangThai.Text = "Trạng thái";
             this.lblTrangThai.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -729,14 +740,14 @@ namespace QLSV
             this.tableLayoutPanel9.Controls.Add(this.btnEdit, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.btnAdd, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(278, 167);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(287, 167);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.Padding = new System.Windows.Forms.Padding(18, 0, 0, 0);
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel9.TabIndex = 20;
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel9.TabIndex = 7;
             // 
             // btnEdit
             // 
@@ -744,11 +755,11 @@ namespace QLSV
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEdit.Location = new System.Drawing.Point(152, 8);
+            this.btnEdit.Location = new System.Drawing.Point(156, 8);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(9, 8, 0, 0);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(116, 52);
-            this.btnEdit.TabIndex = 16;
+            this.btnEdit.Size = new System.Drawing.Size(121, 52);
+            this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = false;
             // 
@@ -761,8 +772,8 @@ namespace QLSV
             this.btnAdd.Location = new System.Drawing.Point(18, 8);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 8, 9, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(116, 52);
-            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Size = new System.Drawing.Size(120, 52);
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = false;
             // 
@@ -773,15 +784,15 @@ namespace QLSV
             this.tableLayoutPanel8.Controls.Add(this.txtKhoa, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.lblKhoa, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(546, 107);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(564, 107);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(268, 60);
-            this.tableLayoutPanel8.TabIndex = 21;
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(277, 60);
+            this.tableLayoutPanel8.TabIndex = 5;
             // 
             // txtKhoa
             // 
@@ -791,8 +802,8 @@ namespace QLSV
             this.txtKhoa.Location = new System.Drawing.Point(19, 28);
             this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(246, 21);
-            this.txtKhoa.TabIndex = 18;
+            this.txtKhoa.Size = new System.Drawing.Size(255, 21);
+            this.txtKhoa.TabIndex = 5;
             // 
             // lblKhoa
             // 
@@ -801,7 +812,7 @@ namespace QLSV
             this.lblKhoa.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.lblKhoa.Location = new System.Drawing.Point(19, 6);
             this.lblKhoa.Name = "lblKhoa";
-            this.lblKhoa.Size = new System.Drawing.Size(246, 19);
+            this.lblKhoa.Size = new System.Drawing.Size(255, 19);
             this.lblKhoa.TabIndex = 7;
             this.lblKhoa.Text = "Khoa";
             this.lblKhoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -814,7 +825,7 @@ namespace QLSV
             this.pnlTongQuan.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTongQuan.Location = new System.Drawing.Point(0, 0);
             this.pnlTongQuan.Name = "pnlTongQuan";
-            this.pnlTongQuan.Size = new System.Drawing.Size(920, 173);
+            this.pnlTongQuan.Size = new System.Drawing.Size(951, 173);
             this.pnlTongQuan.TabIndex = 8;
             // 
             // pnlSoLieuThongKe
@@ -827,7 +838,7 @@ namespace QLSV
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.pnlSoLieuThongKe.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.pnlSoLieuThongKe.Controls.Add(this.pnlSVmoi, 3, 0);
             this.pnlSoLieuThongKe.Controls.Add(this.pnlSoLop, 5, 0);
             this.pnlSoLieuThongKe.Controls.Add(this.pnlTongSV, 1, 0);
@@ -836,42 +847,42 @@ namespace QLSV
             this.pnlSoLieuThongKe.Name = "pnlSoLieuThongKe";
             this.pnlSoLieuThongKe.RowCount = 1;
             this.pnlSoLieuThongKe.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.pnlSoLieuThongKe.Size = new System.Drawing.Size(920, 112);
+            this.pnlSoLieuThongKe.Size = new System.Drawing.Size(951, 112);
             this.pnlSoLieuThongKe.TabIndex = 9;
             // 
             // pnlSVmoi
             // 
             this.pnlSVmoi.AutoSize = true;
             this.pnlSVmoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            this.pnlSVmoi.Controls.Add(this.lblSVmoi);
+            this.pnlSVmoi.Controls.Add(this.lblSV);
             this.pnlSVmoi.Controls.Add(this.pictureSVmoi);
-            this.pnlSVmoi.Controls.Add(this.solieuSVmoi);
+            this.pnlSVmoi.Controls.Add(this.solieuSV);
             this.pnlSVmoi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSVmoi.Location = new System.Drawing.Point(328, 0);
+            this.pnlSVmoi.Location = new System.Drawing.Point(338, 0);
             this.pnlSVmoi.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSVmoi.Name = "pnlSVmoi";
-            this.pnlSVmoi.Size = new System.Drawing.Size(263, 112);
+            this.pnlSVmoi.Size = new System.Drawing.Size(273, 112);
             this.pnlSVmoi.TabIndex = 5;
             // 
-            // lblSVmoi
+            // lblSV
             // 
-            this.lblSVmoi.AutoSize = true;
-            this.lblSVmoi.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.lblSVmoi.ForeColor = System.Drawing.Color.Black;
-            this.lblSVmoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSVmoi.Location = new System.Drawing.Point(21, 18);
-            this.lblSVmoi.Name = "lblSVmoi";
-            this.lblSVmoi.Size = new System.Drawing.Size(119, 25);
-            this.lblSVmoi.TabIndex = 7;
-            this.lblSVmoi.Text = "Sinh viên mới";
-            this.lblSVmoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSV.AutoSize = true;
+            this.lblSV.Font = new System.Drawing.Font("Segoe UI", 13F);
+            this.lblSV.ForeColor = System.Drawing.Color.Black;
+            this.lblSV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblSV.Location = new System.Drawing.Point(21, 18);
+            this.lblSV.Name = "lblSV";
+            this.lblSV.Size = new System.Drawing.Size(163, 25);
+            this.lblSV.TabIndex = 7;
+            this.lblSV.Text = "Sinh viên đang học";
+            this.lblSV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureSVmoi
             // 
             this.pictureSVmoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureSVmoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.pictureSVmoi.Image = ((System.Drawing.Image)(resources.GetObject("pictureSVmoi.Image")));
-            this.pictureSVmoi.Location = new System.Drawing.Point(176, 24);
+            this.pictureSVmoi.Location = new System.Drawing.Point(186, 24);
             this.pictureSVmoi.Name = "pictureSVmoi";
             this.pictureSVmoi.Padding = new System.Windows.Forms.Padding(9);
             this.pictureSVmoi.Size = new System.Drawing.Size(70, 70);
@@ -879,15 +890,15 @@ namespace QLSV
             this.pictureSVmoi.TabIndex = 6;
             this.pictureSVmoi.TabStop = false;
             // 
-            // solieuSVmoi
+            // solieuSV
             // 
-            this.solieuSVmoi.AutoSize = true;
-            this.solieuSVmoi.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.solieuSVmoi.Location = new System.Drawing.Point(19, 47);
-            this.solieuSVmoi.Name = "solieuSVmoi";
-            this.solieuSVmoi.Size = new System.Drawing.Size(121, 45);
-            this.solieuSVmoi.TabIndex = 4;
-            this.solieuSVmoi.Text = "Số liệu";
+            this.solieuSV.AutoSize = true;
+            this.solieuSV.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.solieuSV.Location = new System.Drawing.Point(19, 47);
+            this.solieuSV.Name = "solieuSV";
+            this.solieuSV.Size = new System.Drawing.Size(121, 45);
+            this.solieuSV.TabIndex = 4;
+            this.solieuSV.Text = "Số liệu";
             // 
             // pnlSoLop
             // 
@@ -897,10 +908,10 @@ namespace QLSV
             this.pnlSoLop.Controls.Add(this.pictureSoLop);
             this.pnlSoLop.Controls.Add(this.solieuSoLop);
             this.pnlSoLop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSoLop.Location = new System.Drawing.Point(621, 0);
+            this.pnlSoLop.Location = new System.Drawing.Point(641, 0);
             this.pnlSoLop.Margin = new System.Windows.Forms.Padding(0);
             this.pnlSoLop.Name = "pnlSoLop";
-            this.pnlSoLop.Size = new System.Drawing.Size(263, 112);
+            this.pnlSoLop.Size = new System.Drawing.Size(273, 112);
             this.pnlSoLop.TabIndex = 5;
             // 
             // lblSoLop
@@ -921,7 +932,7 @@ namespace QLSV
             this.pictureSoLop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureSoLop.BackColor = System.Drawing.Color.LightGray;
             this.pictureSoLop.Image = ((System.Drawing.Image)(resources.GetObject("pictureSoLop.Image")));
-            this.pictureSoLop.Location = new System.Drawing.Point(176, 24);
+            this.pictureSoLop.Location = new System.Drawing.Point(186, 24);
             this.pictureSoLop.Name = "pictureSoLop";
             this.pictureSoLop.Padding = new System.Windows.Forms.Padding(7);
             this.pictureSoLop.Size = new System.Drawing.Size(70, 70);
@@ -950,7 +961,7 @@ namespace QLSV
             this.pnlTongSV.Location = new System.Drawing.Point(35, 0);
             this.pnlTongSV.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTongSV.Name = "pnlTongSV";
-            this.pnlTongSV.Size = new System.Drawing.Size(263, 112);
+            this.pnlTongSV.Size = new System.Drawing.Size(273, 112);
             this.pnlTongSV.TabIndex = 5;
             // 
             // pictureTongSV
@@ -958,7 +969,7 @@ namespace QLSV
             this.pictureTongSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureTongSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.pictureTongSV.Image = ((System.Drawing.Image)(resources.GetObject("pictureTongSV.Image")));
-            this.pictureTongSV.Location = new System.Drawing.Point(176, 24);
+            this.pictureTongSV.Location = new System.Drawing.Point(186, 24);
             this.pictureTongSV.Name = "pictureTongSV";
             this.pictureTongSV.Padding = new System.Windows.Forms.Padding(6);
             this.pictureTongSV.Size = new System.Drawing.Size(70, 70);
@@ -996,7 +1007,7 @@ namespace QLSV
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(920, 61);
+            this.panel8.Size = new System.Drawing.Size(951, 61);
             this.panel8.TabIndex = 8;
             // 
             // lblTongQuan
@@ -1030,7 +1041,7 @@ namespace QLSV
             this.btnCaiDat.Name = "btnCaiDat";
             this.btnCaiDat.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnCaiDat.Size = new System.Drawing.Size(230, 42);
-            this.btnCaiDat.TabIndex = 9;
+            this.btnCaiDat.TabIndex = 18;
             this.btnCaiDat.Text = "   ⚙  Cài đặt";
             this.btnCaiDat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaiDat.UseVisualStyleBackColor = true;
@@ -1059,7 +1070,7 @@ namespace QLSV
             this.btnBaoCao.Name = "btnBaoCao";
             this.btnBaoCao.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnBaoCao.Size = new System.Drawing.Size(230, 42);
-            this.btnBaoCao.TabIndex = 15;
+            this.btnBaoCao.TabIndex = 17;
             this.btnBaoCao.Text = "    Báo cáo";
             this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaoCao.UseVisualStyleBackColor = true;
@@ -1072,7 +1083,7 @@ namespace QLSV
             this.btnDiemSo.Name = "btnDiemSo";
             this.btnDiemSo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnDiemSo.Size = new System.Drawing.Size(230, 42);
-            this.btnDiemSo.TabIndex = 14;
+            this.btnDiemSo.TabIndex = 16;
             this.btnDiemSo.Text = "    Điểm số";
             this.btnDiemSo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDiemSo.UseVisualStyleBackColor = true;
@@ -1086,7 +1097,7 @@ namespace QLSV
             this.btnGiangVien.Name = "btnGiangVien";
             this.btnGiangVien.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnGiangVien.Size = new System.Drawing.Size(230, 42);
-            this.btnGiangVien.TabIndex = 13;
+            this.btnGiangVien.TabIndex = 15;
             this.btnGiangVien.Text = "    Giảng viên";
             this.btnGiangVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGiangVien.UseVisualStyleBackColor = true;
@@ -1099,7 +1110,7 @@ namespace QLSV
             this.button13.Name = "button13";
             this.button13.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button13.Size = new System.Drawing.Size(230, 42);
-            this.button13.TabIndex = 12;
+            this.button13.TabIndex = 14;
             this.button13.Text = "    Môn học";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
@@ -1112,7 +1123,7 @@ namespace QLSV
             this.btnSinhVien.Name = "btnSinhVien";
             this.btnSinhVien.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnSinhVien.Size = new System.Drawing.Size(230, 42);
-            this.btnSinhVien.TabIndex = 11;
+            this.btnSinhVien.TabIndex = 13;
             this.btnSinhVien.Text = "    Sinh viên";
             this.btnSinhVien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSinhVien.UseVisualStyleBackColor = true;
@@ -1125,7 +1136,7 @@ namespace QLSV
             this.btnLopHoc.Name = "btnLopHoc";
             this.btnLopHoc.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnLopHoc.Size = new System.Drawing.Size(230, 42);
-            this.btnLopHoc.TabIndex = 10;
+            this.btnLopHoc.TabIndex = 12;
             this.btnLopHoc.Text = "    Lớp học";
             this.btnLopHoc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLopHoc.UseVisualStyleBackColor = true;
@@ -1138,7 +1149,7 @@ namespace QLSV
             this.btnTongQuan.Name = "btnTongQuan";
             this.btnTongQuan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnTongQuan.Size = new System.Drawing.Size(230, 42);
-            this.btnTongQuan.TabIndex = 9;
+            this.btnTongQuan.TabIndex = 11;
             this.btnTongQuan.Text = "    Tổng quan";
             this.btnTongQuan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTongQuan.UseVisualStyleBackColor = true;
@@ -1185,7 +1196,7 @@ namespace QLSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 696);
+            this.ClientSize = new System.Drawing.Size(1181, 696);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.pnlTopbar);
             this.Controls.Add(this.pnlSidebar);
@@ -1264,9 +1275,9 @@ namespace QLSV
         private System.Windows.Forms.Panel pnlTongQuan;
         private System.Windows.Forms.TableLayoutPanel pnlSoLieuThongKe;
         private System.Windows.Forms.Panel pnlSVmoi;
-        private System.Windows.Forms.Label lblSVmoi;
+        private System.Windows.Forms.Label lblSV;
         private System.Windows.Forms.PictureBox pictureSVmoi;
-        private System.Windows.Forms.Label solieuSVmoi;
+        private System.Windows.Forms.Label solieuSV;
         private System.Windows.Forms.Panel pnlSoLop;
         private System.Windows.Forms.Label lblSoLop;
         private System.Windows.Forms.PictureBox pictureSoLop;
@@ -1295,7 +1306,7 @@ namespace QLSV
         private System.Windows.Forms.ComboBox txtLop;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.ComboBox txtTrangThai;

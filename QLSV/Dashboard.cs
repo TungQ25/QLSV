@@ -17,6 +17,8 @@ namespace QLSV
             btnEdit.Click += btnEdit_Click;
             btnDelete.Click += btnDelete_Click;
             btnRefresh.Click += btnRefresh_Click;
+            btnSearch.Click += btnSearch_Click;
+            txtSearch.KeyDown += txtSearch_KeyDown;
             txtKhoa.SelectedIndexChanged += txtKhoa_SelectedIndexChanged;
             InitializeSelectionInputs();
             ConfigureDataGrid();
@@ -227,6 +229,11 @@ namespace QLSV
 
         private void LoadSinhVien()
         {
+            LoadSinhVien(null);
+        }
+
+        private void LoadSinhVien(string keyword)
+        {
             try
             {
                 // Map cột DataGridView với cột trong database
@@ -252,8 +259,22 @@ namespace QLSV
                                  FROM SinhVien sv
                                  LEFT JOIN Lop l ON sv.MaLop = l.MaLop
                                  LEFT JOIN Khoa k ON l.MaKhoa = k.MaKhoa";
-                DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+                SqlParameter[] parameters = null;
+                if (!string.IsNullOrWhiteSpace(keyword))
+                {
+                    query += @" WHERE sv.MSSV LIKE @Keyword
+                                OR sv.HoTen LIKE @Keyword
+                                OR sv.GioiTinh LIKE @Keyword
+                                OR l.TenLop LIKE @Keyword
+                                OR k.TenKhoa LIKE @Keyword
+                                OR sv.TrangThai LIKE @Keyword";
+                    parameters = new[] { new SqlParameter("@Keyword", "%" + keyword.Trim() + "%") }; 
+                }
+
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
                 dataGridDSSV.DataSource = dt;
+                UpdateStatistics(dt);
                 LoadComboBoxData();
 
                 if (dataGridDSSV.Rows.Count > 0)
@@ -271,6 +292,37 @@ namespace QLSV
             {
                 MessageBox.Show("Lỗi kết nối database: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void PerformSearch()
+        {
+            string keyword = txtSearch.Text.Trim();
+            LoadSinhVien(string.IsNullOrWhiteSpace(keyword) ? null : keyword);
+        }
+
+        private void UpdateStatistics(DataTable dtSinhVien)
+        {
+            int tongSinhVien = dtSinhVien?.Rows.Count ?? 0; // Đếm sinh viên theo số dòng
+            int soSinhVienDangHoc = 0;
+
+            if (dtSinhVien != null)
+            {
+                foreach (DataRow row in dtSinhVien.Rows)
+                {
+                    string trangThai = Convert.ToString(row["TrangThai"])?.Trim();
+                    if (string.Equals(trangThai, "Đang học", StringComparison.OrdinalIgnoreCase))
+                    {
+                        soSinhVienDangHoc++;
+                    }
+                }
+            }
+
+            object soLopResult = DatabaseHelper.ExecuteScalar("SELECT COUNT(*) FROM Lop");
+            int soLop = soLopResult != null && soLopResult != DBNull.Value ? Convert.ToInt32(soLopResult) : 0;
+
+            solieuTongSV.Text = tongSinhVien.ToString();
+            solieuSV.Text = soSinhVienDangHoc.ToString();
+            solieuSoLop.Text = soLop.ToString();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -564,6 +616,20 @@ namespace QLSV
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            PerformSearch();
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                PerformSearch();
+            }
         }
 
         private void pnlActionButtons_Paint(object sender, PaintEventArgs e)
