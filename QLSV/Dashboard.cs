@@ -3,397 +3,463 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using System.Drawing.Drawing2D;
 
 namespace QLSV
 {
     public partial class Dashboard : Form
     {
-        private Panel sidebarPanel;
-        private Panel headerPanel;
-        private Panel contentPanel;
-        private Panel menuPanel;
-
         public Dashboard()
         {
             InitializeComponent();
-            InitializeCustomComponents();
+            dataGridDSSV.CellClick += dataGridView1_CellClick;
+            btnAdd.Click += btnAdd_Click;
+            btnEdit.Click += btnEdit_Click;
+            btnDelete.Click += btnDelete_Click;
+            btnRefresh.Click += btnRefresh_Click;
+            btnSearch.Click += btnSearch_Click;
+            txtSearch.KeyDown += txtSearch_KeyDown;
+            txtKhoa.SelectedIndexChanged += txtKhoa_SelectedIndexChanged;
+            InitializeSelectionInputs();
+            ConfigureDataGrid();
+            pnlTongSV.Resize += RoundedControls_Resize;
+            pnlSoLop.Resize += RoundedControls_Resize;
+            pnlSVmoi.Resize += RoundedControls_Resize;
+            pnlActions.Resize += RoundedControls_Resize;
+            pnlStudentList.Resize += RoundedControls_Resize;
+            pictureTongSV.Resize += RoundedControls_Resize;
+            pictureSVmoi.Resize += RoundedControls_Resize;
+            pictureSoLop.Resize += RoundedControls_Resize;
+            Shown += Dashboard_Shown;
             LoadSinhVien();
         }
 
-        private void InitializeCustomComponents()
+        private void Dashboard_Shown(object sender, EventArgs e)
         {
-            this.Text = "Quản lý Sinh viên - Dashboard";
-            this.Size = new Size(1400, 800);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.FromArgb(240, 242, 245);
-
-            //CreateSidebar();
-            //CreateHeader();
-            //CreateContent();
+            ApplyRoundedCorners();
         }
 
-        private void CreateSidebar()
+        private void RoundedControls_Resize(object sender, EventArgs e)
         {
-            sidebarPanel = new Panel
-            {
-                Width = 250,
-                Dock = DockStyle.Left,
-                BackColor = Color.FromArgb(248, 249, 250)
-            };
-
-            sidebarPanel.Controls.Add(menuPanel);
-
-            // Settings button at bottom
-            Button settingsBtn = new Button
-            {
-                Text = "⚙  Cài đặt",
-                Height = 45,
-                Dock = DockStyle.Bottom,
-                FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(248, 249, 250),
-                ForeColor = Color.FromArgb(108, 117, 125),
-                Font = new Font("Segoe UI", 10),
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(35, 0, 0, 0)
-            };
-            settingsBtn.FlatAppearance.BorderSize = 0;
-            sidebarPanel.Controls.Add(settingsBtn);
-
-            this.Controls.Add(sidebarPanel);
+            ApplyRoundedCorners();
         }
 
-        private void AddMenuItem(string text, int yPos, bool isActive)
+        private void ApplyRoundedCorners()
         {
-            Button menuBtn = new Button
-            {
-                Text = text,
-                Size = new Size(240, 45),
-                Location = new Point(5, yPos),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = isActive ? Color.FromArgb(13, 110, 253) : Color.Transparent,
-                ForeColor = isActive ? Color.White : Color.FromArgb(108, 117, 125),
-                Font = new Font("Segoe UI", 10, isActive ? FontStyle.Bold : FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(35, 0, 0, 0),
-                Cursor = Cursors.Hand
-            };
+            SetRoundedRegion(pnlTongSV, 14);
+            SetRoundedRegion(pnlSoLop, 14);
+            SetRoundedRegion(pnlSVmoi, 14);
+            SetRoundedRegion(pnlActions, 14);
+            SetRoundedRegion(pnlStudentList, 14);
+            SetCircularRegion(pictureTongSV);
+            SetCircularRegion(pictureSVmoi);
+            SetCircularRegion(pictureSoLop);
 
-            menuBtn.FlatAppearance.BorderSize = 0;
-            menuBtn.FlatAppearance.MouseOverBackColor = isActive ? Color.FromArgb(13, 110, 253) : Color.FromArgb(233, 236, 239);
-
-            menuPanel.Controls.Add(menuBtn);
         }
 
-        private void CreateHeader()
+        private void SetRoundedRegion(Control control, int radius)
         {
-            headerPanel = new Panel
+            if (control.Width <= 0 || control.Height <= 0)
             {
-                Height = 70,
-                Dock = DockStyle.Top,
-                BackColor = Color.White
-            };
+                return;
+            }
 
-            // Search box
-            TextBox searchBox = new TextBox
+            using (var path = RoundedPanel.CreateRoundedPath(control.ClientRectangle, radius))
             {
-                Width = 400,
-                Height = 35,
-                Location = new Point(30, 20),
-                Font = new Font("Segoe UI", 11),
-                Text = "Tìm kiếm sinh viên...",
-                ForeColor = Color.Gray
-            };
+                control.Region = new Region(path);
+            }
+        }
 
-            searchBox.GotFocus += (s, e) =>
+        private void SetCircularRegion(Control control)
+        {
+            if (control.Width <= 0 || control.Height <= 0)
             {
-                if (searchBox.Text == "Tìm kiếm sinh viên...")
+                return;
+            }
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddEllipse(0, 0, control.Width, control.Height);
+                control.Region = new Region(path);
+            }
+        }
+
+        private void InitializeSelectionInputs()
+        {
+            txtNgaySinh.Format = DateTimePickerFormat.Custom;
+            txtNgaySinh.CustomFormat = "dd/MM/yyyy";
+
+            txtLop.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtGioitinh.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtKhoa.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            txtGioitinh.Items.Clear();
+            txtGioitinh.Items.Add("Nam");
+            txtGioitinh.Items.Add("Nữ");
+            txtGioitinh.SelectedIndex = 0;
+        }
+
+        private void ConfigureDataGrid()
+        {
+            dataGridDSSV.AutoGenerateColumns = false;
+            dataGridDSSV.AllowUserToAddRows = false;
+            dataGridDSSV.AllowUserToDeleteRows = false;
+            dataGridDSSV.ReadOnly = true;
+            dataGridDSSV.MultiSelect = false;
+            dataGridDSSV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void LoadComboBoxData()
+        {
+            LoadKhoaComboBox();
+            LoadTrangThaiComboBox();
+            LoadLopBySelectedKhoa();
+        }
+
+        private void LoadKhoaComboBox()
+        {
+            string currentText = txtKhoa.Text;
+            DataTable data = DatabaseHelper.ExecuteQuery("SELECT MaKhoa, TenKhoa FROM Khoa ORDER BY TenKhoa");
+
+            txtKhoa.DataSource = data;
+            txtKhoa.DisplayMember = "TenKhoa";
+            txtKhoa.ValueMember = "MaKhoa";
+
+            if (!string.IsNullOrWhiteSpace(currentText))
+            {
+                int index = txtKhoa.FindStringExact(currentText);
+                if (index >= 0)
                 {
-                    searchBox.Text = "";
-                    searchBox.ForeColor = Color.Black;
+                    txtKhoa.SelectedIndex = index;
                 }
-            };
+            }
+        }
 
-            searchBox.LostFocus += (s, e) =>
+        private void LoadTrangThaiComboBox()
+        {
+            string currentValue = txtTrangThai.Text;
+            DataTable data = DatabaseHelper.ExecuteQuery("SELECT DISTINCT TrangThai FROM SinhVien " +
+                             "WHERE TrangThai IS NOT NULL AND LTRIM(RTRIM(TrangThai)) <> '' ORDER BY TrangThai");
+
+            txtTrangThai.Items.Clear();
+            foreach (DataRow row in data.Rows)
             {
-                if (string.IsNullOrWhiteSpace(searchBox.Text))
+                txtTrangThai.Items.Add(Convert.ToString(row[0]));
+            }
+
+            string[] defaultTrangThai = { "Đang học", "Nghỉ học" };
+            foreach (string trangThai in defaultTrangThai)
+            {
+                if (!txtTrangThai.Items.Contains(trangThai))
                 {
-                    searchBox.Text = "Tìm kiếm sinh viên...";
-                    searchBox.ForeColor = Color.Gray;
+                    txtTrangThai.Items.Add(trangThai);
                 }
-            };
+            }
 
-            // Admin label
-            Label adminLabel = new Label
+            if (!string.IsNullOrWhiteSpace(currentValue) && txtTrangThai.Items.Contains(currentValue))
             {
-                Text = "Admin ▼",
-                Font = new Font("Segoe UI", 10),
-                ForeColor = Color.FromArgb(73, 80, 87),
-                AutoSize = true,
-                Location = new Point(this.Width - 200, 25),
-                Anchor = AnchorStyles.Top | AnchorStyles.Right,
-                Cursor = Cursors.Hand
-            };
-
-            // Notification icon
-            Label notificationIcon = new Label
+                txtTrangThai.SelectedItem = currentValue;
+            }
+            else if (txtTrangThai.Items.Count > 0)
             {
-                Text = "🔔",
-                Font = new Font("Segoe UI", 16),
-                AutoSize = true,
-                Location = new Point(this.Width - 280, 22),
-                Anchor = AnchorStyles.Top | AnchorStyles.Right,
-                Cursor = Cursors.Hand
-            };
-
-            headerPanel.Controls.Add(searchBox);
-            headerPanel.Controls.Add(notificationIcon);
-            headerPanel.Controls.Add(adminLabel);
-
-            this.Controls.Add(headerPanel);
+                txtTrangThai.SelectedIndex = 0;
+            }
         }
 
-        private void CreateContent()
+        private void LoadLopBySelectedKhoa()
         {
-            contentPanel = new Panel
+            string maKhoa = GetComboSelectedValue(txtKhoa);
+            string currentText = txtLop.Text;
+
+            txtLop.DataSource = null;
+
+            if (string.IsNullOrWhiteSpace(maKhoa))
             {
-                Dock = DockStyle.Fill,
-                AutoScroll = true,
-                BackColor = Color.FromArgb(240, 242, 245),
-                Padding = new Padding(30)
-            };
+                return;
+            }
 
-            // Title
-            Label titleLabel = new Label
+            SqlParameter[] parameters = { new SqlParameter("@MaKhoa", maKhoa) };
+            DataTable data = DatabaseHelper.ExecuteQuery(
+                "SELECT MaLop, TenLop FROM Lop WHERE MaKhoa = @MaKhoa ORDER BY TenLop",
+                parameters);
+
+            txtLop.DataSource = data;
+            txtLop.DisplayMember = "TenLop";
+            txtLop.ValueMember = "MaLop";
+
+            if (!string.IsNullOrWhiteSpace(currentText))
             {
-                Text = "Tổng quan",
-                Font = new Font("Segoe UI", 24, FontStyle.Bold),
-                ForeColor = Color.FromArgb(33, 37, 41),
-                AutoSize = true,
-                Location = new Point(30, 20)
-            };
-            contentPanel.Controls.Add(titleLabel);
-
-            // Statistics cards
-            CreateStatisticsCards();
-
-            // Chart section
-            CreateChartSection();
-
-            // Student list
-            CreateStudentList();
-
-            this.Controls.Add(contentPanel);
-        }
-
-        private void CreateStatisticsCards()
-        {
-            int xPos = 30;
-            int yPos = 80;
-
-            CreateStatCard("Tổng số Sinh viên", "1,234", xPos, yPos, Color.FromArgb(13, 110, 253));
-            xPos += 380;
-            CreateStatCard("Sinh viên Mới", "45", xPos, yPos, Color.FromArgb(25, 135, 84));
-            xPos += 380;
-            CreateStatCard("Lớp học Active", "68", xPos, yPos, Color.FromArgb(25, 135, 84));
-        }
-
-        private void CreateStatCard(string title, string value, int x, int y, Color accentColor)
-        {
-            RoundedPanel card = new RoundedPanel
-            {
-                Size = new Size(350, 120),
-                Location = new Point(x, y),
-                BackColor = Color.White,
-                BorderRadius = 15,
-                BorderSize = 0
-            };
-
-            Label titleLabel = new Label
-            {
-                Text = title,
-                Font = new Font("Segoe UI", 11),
-                ForeColor = Color.FromArgb(108, 117, 125),
-                AutoSize = true,
-                Location = new Point(20, 20)
-            };
-
-            Label valueLabel = new Label
-            {
-                Text = value,
-                Font = new Font("Segoe UI", 32, FontStyle.Bold),
-                ForeColor = Color.FromArgb(33, 37, 41),
-                AutoSize = true,
-                Location = new Point(20, 45)
-            };
-
-            Label iconLabel = new Label
-            {
-                Text = "📊",
-                Font = new Font("Segoe UI", 40),
-                AutoSize = true,
-                Location = new Point(270, 35)
-            };
-
-            card.Controls.Add(titleLabel);
-            card.Controls.Add(valueLabel);
-            card.Controls.Add(iconLabel);
-
-            contentPanel.Controls.Add(card);
-        }
-
-        private void CreateChartSection()
-        {
-            RoundedPanel chartPanel = new RoundedPanel
-            {
-                Size = new Size(1110, 300),
-                Location = new Point(30, 220),
-                BackColor = Color.White,
-                BorderRadius = 15,
-                BorderSize = 0
-            };
-
-            Label chartTitle = new Label
-            {
-                Text = "Số lượng sinh viên theo Khoa",
-                Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                ForeColor = Color.FromArgb(33, 37, 41),
-                AutoSize = true,
-                Location = new Point(20, 20)
-            };
-
-            Label chartPlaceholder = new Label
-            {
-                Text = "[Biểu đồ cột sẽ được render ở đây]",
-                Font = new Font("Segoe UI", 11),
-                ForeColor = Color.FromArgb(108, 117, 125),
-                AutoSize = true,
-                Location = new Point(400, 130)
-            };
-
-            chartPanel.Controls.Add(chartTitle);
-            chartPanel.Controls.Add(chartPlaceholder);
-
-            contentPanel.Controls.Add(chartPanel);
-        }
-
-        private void CreateStudentList()
-        {
-            RoundedPanel listPanel = new RoundedPanel
-            {
-                Size = new Size(1110, 400),
-                Location = new Point(30, 540),
-                BackColor = Color.White,
-                BorderRadius = 15,
-                BorderSize = 0
-            };
-
-            Label listTitle = new Label
-            {
-                Text = "DANH SÁCH SINH VIÊN",
-                Font = new Font("Segoe UI", 14, FontStyle.Bold),
-                ForeColor = Color.FromArgb(33, 37, 41),
-                AutoSize = true,
-                Location = new Point(20, 20)
-            };
-
-            Button addButton = new Button
-            {
-                Text = "➕ Thêm sinh viên mới",
-                Size = new Size(180, 40),
-                Location = new Point(800, 15),
-                BackColor = Color.FromArgb(13, 110, 253),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                Cursor = Cursors.Hand
-            };
-            addButton.FlatAppearance.BorderSize = 0;
-
-            Button exportButton = new Button
-            {
-                Text = "📤 Xuất dữ liệu",
-                Size = new Size(140, 40),
-                Location = new Point(990, 15),
-                BackColor = Color.FromArgb(248, 249, 250),
-                ForeColor = Color.FromArgb(73, 80, 87),
-                FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 10),
-                Cursor = Cursors.Hand
-            };
-            exportButton.FlatAppearance.BorderSize = 1;
-            exportButton.FlatAppearance.BorderColor = Color.FromArgb(206, 212, 218);
-
-            DataGridView dataGrid = new DataGridView
-            {
-                Size = new Size(1070, 300),
-                Location = new Point(20, 70),
-                BackgroundColor = Color.White,
-                BorderStyle = BorderStyle.None,
-                ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+                int index = txtLop.FindStringExact(currentText);
+                if (index >= 0)
                 {
-                    BackColor = Color.FromArgb(248, 249, 250),
-                    ForeColor = Color.FromArgb(73, 80, 87),
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                    Alignment = DataGridViewContentAlignment.MiddleLeft,
-                    Padding = new Padding(10)
-                },
-                DefaultCellStyle = new DataGridViewCellStyle
+                    txtLop.SelectedIndex = index;
+                }
+            }
+        }
+
+        private static string GetComboValue(ComboBox comboBox)
+        {
+            return Convert.ToString(comboBox.SelectedItem ?? comboBox.Text)?.Trim();
+        }
+
+        private static string GetComboSelectedValue(ComboBox comboBox)
+        {
+            return Convert.ToString(comboBox.SelectedValue)?.Trim();
+        }
+
+        private static void SetComboValue(ComboBox comboBox, string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                if (comboBox.Items.Count > 0)
                 {
-                    Font = new Font("Segoe UI", 10),
-                    ForeColor = Color.FromArgb(33, 37, 41),
-                    SelectionBackColor = Color.FromArgb(233, 236, 239),
-                    SelectionForeColor = Color.FromArgb(33, 37, 41),
-                    Padding = new Padding(10)
-                },
-                RowHeadersVisible = false,
-                AllowUserToAddRows = false,
-                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                ColumnHeadersHeight = 45,
-                RowTemplate = { Height = 50 }
-            };
+                    comboBox.SelectedIndex = 0;
+                }
 
-            // Add columns
-            dataGrid.Columns.Add(new DataGridViewCheckBoxColumn { HeaderText = "", Width = 40 });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "MSSV", Name = "MSSV" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Họ và tên", Name = "HoTen" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Ngày sinh", Name = "NgaySinh" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Lớp", Name = "Lop" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Khoa", Name = "Khoa" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Trạng thái", Name = "TrangThai" });
-            dataGrid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Actions", Name = "Actions" });
+                return;
+            }
 
-            // Add sample data
-            dataGrid.Rows.Add(false, "SV001", "Nguyễn Văn A", "12/05/2004", "D19_TH01", "CNTT", "Đang học", "Sửa | Xóa");
-            dataGrid.Rows.Add(false, "SV002", "Trần Thị B", "08/11/2003", "D20_KT02", "Kinh tế", "Đang học", "Sửa | Xóa");
-            dataGrid.Rows.Add(false, "SV003", "Lê Minh C", "20/02/2005", "D19_TH01", "CNTT", "Nghỉ học", "Sửa | Xóa");
-
-            listPanel.Controls.Add(listTitle);
-            listPanel.Controls.Add(addButton);
-            listPanel.Controls.Add(exportButton);
-            listPanel.Controls.Add(dataGrid);
-
-            contentPanel.Controls.Add(listPanel);
+            int index = comboBox.FindStringExact(value);
+            if (index >= 0)
+            {
+                comboBox.SelectedIndex = index;
+            }
         }
 
         private void LoadSinhVien()
+        {
+            LoadSinhVien(null);
+        }
+
+        private void LoadSinhVien(string keyword)
         {
             try
             {
                 // Map cột DataGridView với cột trong database
                 MSSV.DataPropertyName = "MSSV";
+                fullname.DataPropertyName = "HoTen";
+                gioitinh.DataPropertyName = "GioiTinh";
                 Ngaysinh.DataPropertyName = "NgaySinh";
+                Ngaysinh.DefaultCellStyle.Format = "dd/MM/yyyy";
                 lop.DataPropertyName = "Lop";
                 khoa.DataPropertyName = "Khoa";
                 trangthai.DataPropertyName = "TrangThai";
-                dataGridView1.AutoGenerateColumns = false;
+                dataGridDSSV.AutoGenerateColumns = false;
 
-                string query = "SELECT MSSV, NgaySinh, Lop, Khoa, TrangThai FROM SinhVien";
-                DataTable dt = DatabaseHelper.ExecuteQuery(query);
-                dataGridView1.DataSource = dt;
+                string query = @"SELECT sv.MSSV,
+                                        sv.HoTen,
+                                        sv.GioiTinh,
+                                        sv.NgaySinh,
+                                        l.TenLop AS Lop,
+                                        k.TenKhoa AS Khoa,
+                                        sv.TrangThai,
+                                        sv.MaLop,
+                                        k.MaKhoa
+                                 FROM SinhVien sv
+                                 LEFT JOIN Lop l ON sv.MaLop = l.MaLop
+                                 LEFT JOIN Khoa k ON l.MaKhoa = k.MaKhoa";
+
+                SqlParameter[] parameters = null;
+                if (!string.IsNullOrWhiteSpace(keyword))
+                {
+                    query += @" WHERE sv.MSSV LIKE @Keyword
+                                OR sv.HoTen LIKE @Keyword
+                                OR sv.GioiTinh LIKE @Keyword
+                                OR l.TenLop LIKE @Keyword
+                                OR k.TenKhoa LIKE @Keyword
+                                OR sv.TrangThai LIKE @Keyword";
+                    parameters = new[] { new SqlParameter("@Keyword", "%" + keyword.Trim() + "%") }; 
+                }
+
+                DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
+                dataGridDSSV.DataSource = dt;
+                UpdateStatistics(dt);
+                LoadComboBoxData();
+
+                if (dataGridDSSV.Rows.Count > 0)
+                {
+                    dataGridDSSV.Rows[0].Selected = true;
+                    LoadRowToTextBoxes(dataGridDSSV.Rows[0]);
+                }
+                else
+                {
+                    txtMssv.Clear();
+                    txtFullname.Clear();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi kết nối database: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PerformSearch()
+        {
+            string keyword = txtSearch.Text.Trim();
+            LoadSinhVien(string.IsNullOrWhiteSpace(keyword) ? null : keyword);
+        }
+
+        private void UpdateStatistics(DataTable dtSinhVien)
+        {
+            int tongSinhVien = dtSinhVien?.Rows.Count ?? 0; // Đếm sinh viên theo số dòng
+            int soSinhVienDangHoc = 0;
+
+            if (dtSinhVien != null)
+            {
+                foreach (DataRow row in dtSinhVien.Rows)
+                {
+                    string trangThai = Convert.ToString(row["TrangThai"])?.Trim();
+                    if (string.Equals(trangThai, "Đang học", StringComparison.OrdinalIgnoreCase))
+                    {
+                        soSinhVienDangHoc++;
+                    }
+                }
+            }
+
+            object soLopResult = DatabaseHelper.ExecuteScalar("SELECT COUNT(*) FROM Lop");
+            int soLop = soLopResult != null && soLopResult != DBNull.Value ? Convert.ToInt32(soLopResult) : 0;
+
+            solieuTongSV.Text = tongSinhVien.ToString();
+            solieuSV.Text = soSinhVienDangHoc.ToString();
+            solieuSoLop.Text = soLop.ToString();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string mssv = txtMssv.Text.Trim();
+            string hoTen = txtFullname.Text.Trim();
+            string gioiTinhValue = GetComboValue(txtGioitinh);
+            DateTime ngaySinh = txtNgaySinh.Value.Date;
+            string maLop = GetComboSelectedValue(txtLop);
+            string khoaValue = GetComboValue(txtKhoa);
+            string trangThaiValue = GetComboValue(txtTrangThai);
+
+            if (string.IsNullOrWhiteSpace(mssv) ||
+                string.IsNullOrWhiteSpace(hoTen) ||
+                string.IsNullOrWhiteSpace(gioiTinhValue) ||
+                string.IsNullOrWhiteSpace(maLop) ||
+                string.IsNullOrWhiteSpace(khoaValue) ||
+                string.IsNullOrWhiteSpace(trangThaiValue))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin trước khi sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string query = @"UPDATE SinhVien
+                                 SET HoTen = @HoTen, GioiTinh = @GioiTinh, NgaySinh = @NgaySinh, MaLop = @MaLop, TrangThai = @TrangThai
+                                 WHERE MSSV = @MSSV";
+
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@MSSV", mssv),
+                    new SqlParameter("@HoTen", hoTen),
+                    new SqlParameter("@GioiTinh", gioiTinhValue),
+                    new SqlParameter("@NgaySinh", ngaySinh),
+                    new SqlParameter("@MaLop", maLop),
+                    new SqlParameter("@TrangThai", trangThaiValue)
+                };
+
+                int affectedRows = DatabaseHelper.ExecuteNonQuery(query, parameters);
+
+                if (affectedRows > 0)
+                {
+                    MessageBox.Show("Sửa sinh viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadSinhVien();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy MSSV để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi sửa sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string mssv = txtMssv.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(mssv))
+            {
+                MessageBox.Show("Vui lòng nhập MSSV trước khi xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "Bạn có chắc muốn xóa sinh viên này không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                string query = "DELETE FROM SinhVien WHERE MSSV = @MSSV";
+                SqlParameter[] parameters = { new SqlParameter("@MSSV", mssv) };
+
+                int affectedRows = DatabaseHelper.ExecuteNonQuery(query, parameters);
+
+                if (affectedRows > 0)
+                {
+                    MessageBox.Show("Xóa sinh viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadSinhVien();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy MSSV để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Sự kiện khi người dùng click vào một ô trong DataGridView
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            LoadRowToTextBoxes(dataGridDSSV.Rows[e.RowIndex]);
+        }
+
+        // Hàm để load dữ liệu từ DataGridViewRow vào các control nhập liệu
+        private void LoadRowToTextBoxes(DataGridViewRow row)
+        {
+            txtMssv.Text = Convert.ToString(row.Cells["MSSV"].Value);
+            txtFullname.Text = Convert.ToString(row.Cells["fullname"].Value);
+            object ngaySinhValue = row.Cells["Ngaysinh"].Value;
+            if (ngaySinhValue != null && DateTime.TryParse(Convert.ToString(ngaySinhValue), out DateTime ngaySinh))
+            {
+                txtNgaySinh.Value = ngaySinh;
+            }
+
+            SetComboValue(txtLop, Convert.ToString(row.Cells["lop"].Value));
+            SetComboValue(txtGioitinh, Convert.ToString(row.Cells["gioitinh"].Value));
+            SetComboValue(txtKhoa, Convert.ToString(row.Cells["khoa"].Value));
+            SetComboValue(txtTrangThai, Convert.ToString(row.Cells["trangthai"].Value));
+
+            DataRowView dataRow = row.DataBoundItem as DataRowView;
+            if (dataRow != null)
+            {
+                string maKhoa = Convert.ToString(dataRow["MaKhoa"]);
+                string maLop = Convert.ToString(dataRow["MaLop"]);
+
+                SelectKhoaByMaKhoa(maKhoa);
+                LoadLopBySelectedKhoa();
+                SelectLopByMaLop(maLop);
             }
         }
 
@@ -411,42 +477,162 @@ namespace QLSV
         {
 
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        
+        private void label1_Click_2(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void panel18_Paint(object sender, PaintEventArgs e)
+        private void tableLayoutPanel2_Paint_2(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            string mssv = txtMssv.Text.Trim();
+            string hoTen = txtFullname.Text.Trim();
+            string gioiTinhValue = GetComboValue(txtGioitinh);
+            DateTime ngaySinh = txtNgaySinh.Value.Date;
+            string maLop = GetComboSelectedValue(txtLop);
+            string khoaValue = GetComboValue(txtKhoa);
+            string trangThaiValue = GetComboValue(txtTrangThai);
+
+            if (string.IsNullOrWhiteSpace(mssv) ||
+                string.IsNullOrWhiteSpace(hoTen) ||
+                string.IsNullOrWhiteSpace(gioiTinhValue) ||
+                string.IsNullOrWhiteSpace(maLop) ||
+                string.IsNullOrWhiteSpace(khoaValue) ||
+                string.IsNullOrWhiteSpace(trangThaiValue))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin trước khi thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string query = @"INSERT INTO SinhVien (MSSV, HoTen, GioiTinh, NgaySinh, MaLop, TrangThai)
+                                 VALUES (@MSSV, @HoTen, @GioiTinh, @NgaySinh, @MaLop, @TrangThai)";
+
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@MSSV", mssv),
+                    new SqlParameter("@HoTen", hoTen),
+                    new SqlParameter("@GioiTinh", gioiTinhValue),
+                    new SqlParameter("@NgaySinh", ngaySinh),
+                    new SqlParameter("@MaLop", maLop),
+                    new SqlParameter("@TrangThai", trangThaiValue)
+                };
+
+                int affectedRows = DatabaseHelper.ExecuteNonQuery(query, parameters);
+
+                if (affectedRows > 0)
+                {
+                    MessageBox.Show("Thêm sinh viên thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadSinhVien();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể thêm sinh viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm sinh viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-                    }
-
-        private void label1_Click_1(object sender, EventArgs e)
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadSinhVien();
+        }
+
+        private void txtKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadLopBySelectedKhoa();
+        }
+
+        private void SelectKhoaByMaKhoa(string maKhoa)
+        {
+            if (string.IsNullOrWhiteSpace(maKhoa))
+            {
+                return;
+            }
+
+            for (int i = 0; i < txtKhoa.Items.Count; i++)
+            {
+                DataRowView rowView = txtKhoa.Items[i] as DataRowView;
+                if (rowView != null && string.Equals(Convert.ToString(rowView["MaKhoa"]), maKhoa, StringComparison.OrdinalIgnoreCase))
+                {
+                    txtKhoa.SelectedIndex = i;
+                    return;
+                }
+            }
+        }
+
+        private void SelectLopByMaLop(string maLop)
+        {
+            if (string.IsNullOrWhiteSpace(maLop))
+            {
+                return;
+            }
+
+            for (int i = 0; i < txtLop.Items.Count; i++)
+            {
+                DataRowView rowView = txtLop.Items[i] as DataRowView;
+                if (rowView != null && string.Equals(Convert.ToString(rowView["MaLop"]), maLop, StringComparison.OrdinalIgnoreCase))
+                {
+                    txtLop.SelectedIndex = i;
+                    return;
+                }
+            }
+        }
+
+        private void imgNotification_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            PerformSearch();
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                PerformSearch();
+            }
+        }
+
+        private void pnlActionButtons_Paint(object sender, PaintEventArgs e)
         {
 
         }

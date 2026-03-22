@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace QLSV
 {
@@ -15,7 +10,7 @@ namespace QLSV
         public Sign_up()
         {
             InitializeComponent();
-        }
+        } 
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -23,6 +18,11 @@ namespace QLSV
             panel_signUp.BorderSize = 2;
             panel_signUp.BorderColor = Color.FromArgb(100, 100, 100);
             panel_signUp.BackColor = Color.White;
+            textBox_password.UseSystemPasswordChar = true;
+            textBox_re_password.UseSystemPasswordChar = true;
+
+            AcceptButton = btnSignUp; // Nhấn Enter sẽ kích hoạt nút đăng ký
+            textBox_username.Focus(); // Đặt con trỏ vào ô nhập tên đăng nhập khi form được tải
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -37,7 +37,69 @@ namespace QLSV
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string username = textBox_username.Text.Trim();
+            string password = textBox_password.Text;
+            string rePassword = textBox_re_password.Text;
 
+            // In thông báo nếu thiếu thông tin tương ứng
+            if (string.IsNullOrWhiteSpace(username) ||
+                string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(rePassword))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!string.Equals(password, rePassword, StringComparison.Ordinal))
+            {
+                MessageBox.Show("Mật khẩu nhập lại phải trùng với mật khẩu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string checkUserQuery = "SELECT COUNT(1) FROM Account WHERE Username = @Username";
+                SqlParameter[] checkParameters = { new SqlParameter("@Username", username) };
+                object countResult = DatabaseHelper.ExecuteScalar(checkUserQuery, checkParameters);
+                int existingCount = countResult != null ? Convert.ToInt32(countResult) : 0;
+
+                if (existingCount > 0)
+                {
+                    MessageBox.Show("Tên đăng nhập đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string passwordHash = DatabaseHelper.HashPassword(password);
+                string insertQuery = @"INSERT INTO Account (Username, Password, Role, IsActive)
+                                       VALUES (@Username, @Password, @Role, @IsActive)";
+
+                SqlParameter[] insertParameters =
+                {
+                    new SqlParameter("@Username", username),
+                    new SqlParameter("@Password", passwordHash),
+                    new SqlParameter("@Role", "user"),
+                    new SqlParameter("@IsActive", true)
+                };
+
+                int affectedRows = DatabaseHelper.ExecuteNonQuery(insertQuery, insertParameters);
+
+                if (affectedRows > 0)
+                {
+                    MessageBox.Show("Đăng ký thành công. Vui lòng đăng nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Hide();
+                    Sign_in signInForm = new Sign_in();
+                    signInForm.ShowDialog();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể đăng ký tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi đăng ký: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -57,9 +119,10 @@ namespace QLSV
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Sign_in signInForm = new Sign_in();
-            signInForm.Show();
             this.Hide();
+            Sign_in signInForm = new Sign_in();
+            signInForm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace QLSV
 {
@@ -23,6 +18,10 @@ namespace QLSV
             panel_signIn.BorderSize = 2;
             panel_signIn.BorderColor = Color.FromArgb(100, 100, 100);
             panel_signIn.BackColor = Color.White;
+            textBox_password.UseSystemPasswordChar = true;
+
+            AcceptButton = btnSignIn; // Nhấn Enter sẽ kích hoạt nút đăng nhập
+            textBox_username.Focus(); // Đặt con trỏ vào ô nhập tên đăng nhập khi form được tải
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -37,10 +36,50 @@ namespace QLSV
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Giả lập đăng nhập thành công
-            Dashboard dashboardForm = new Dashboard();
-            dashboardForm.Show();
-            this.Hide();
+            string username = textBox_username.Text.Trim();
+            string password = textBox_password.Text;
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string passwordHash = DatabaseHelper.HashPassword(password);
+                string query = @"SELECT COUNT(1)
+                                 FROM Account
+                                 WHERE Username = @Username
+                                   AND IsActive = 1
+                                   AND (Password = @Password OR Password = @PasswordHash)";
+
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@Username", username),
+                    new SqlParameter("@Password", password),
+                    new SqlParameter("@PasswordHash", passwordHash)
+                };
+
+                object result = DatabaseHelper.ExecuteScalar(query, parameters);
+                int accountCount = result != null ? Convert.ToInt32(result) : 0;
+
+                if (accountCount > 0)
+                {
+                    Hide();
+                    Dashboard dashboardForm = new Dashboard();
+                    dashboardForm.ShowDialog();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi đăng nhập: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,9 +99,10 @@ namespace QLSV
 
         private void link_SignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Sign_up signUpForm = new Sign_up();
-            signUpForm.Show();
             this.Hide();
+            Sign_up signUpForm = new Sign_up();
+            signUpForm.ShowDialog();
+            this.Close();
         }
     }
 }
