@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using System.Drawing.Drawing2D;
 
 namespace QLSV
 {
@@ -24,6 +25,9 @@ namespace QLSV
             pnlSVmoi.Resize += RoundedControls_Resize;
             pnlActions.Resize += RoundedControls_Resize;
             pnlStudentList.Resize += RoundedControls_Resize;
+            pictureTongSV.Resize += RoundedControls_Resize;
+            pictureSVmoi.Resize += RoundedControls_Resize;
+            pictureSoLop.Resize += RoundedControls_Resize;
             Shown += Dashboard_Shown;
             LoadSinhVien();
         }
@@ -45,6 +49,9 @@ namespace QLSV
             SetRoundedRegion(pnlSVmoi, 14);
             SetRoundedRegion(pnlActions, 14);
             SetRoundedRegion(pnlStudentList, 14);
+            SetCircularRegion(pictureTongSV);
+            SetCircularRegion(pictureSVmoi);
+            SetCircularRegion(pictureSoLop);
 
         }
 
@@ -57,6 +64,20 @@ namespace QLSV
 
             using (var path = RoundedPanel.CreateRoundedPath(control.ClientRectangle, radius))
             {
+                control.Region = new Region(path);
+            }
+        }
+
+        private void SetCircularRegion(Control control)
+        {
+            if (control.Width <= 0 || control.Height <= 0)
+            {
+                return;
+            }
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddEllipse(0, 0, control.Width, control.Height);
                 control.Region = new Region(path);
             }
         }
@@ -541,6 +562,11 @@ namespace QLSV
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlActionButtons_Paint(object sender, PaintEventArgs e)
         {
 
         }
